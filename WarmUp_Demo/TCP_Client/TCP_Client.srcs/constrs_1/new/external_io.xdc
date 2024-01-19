@@ -1,0 +1,8 @@
+set_property PACKAGE_PIN P18 [get_ports {gpio_io_i_1[0]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {gpio_io_i_1[0]}]
+set_property PACKAGE_PIN P17 [get_ports {gpio_io_i_2[0]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {gpio_io_i_2[0]}]
+set_property PACKAGE_PIN M17 [get_ports {gpio_io_i_3[0]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {gpio_io_i_3[0]}]
+set_property PACKAGE_PIN N17 [get_ports {gpio_io_i_4[0]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {gpio_io_i_4[0]}]
