@@ -1,7 +1,7 @@
 """ Simple Server Example
 
 This script creates a socket and listens for connections
-on any IPv4 interface on port 9090. When a connection is
+on any IPv4 interface on port 22. When a connection is
 established, the server waits for a GET or POST command.
 
 GET:
@@ -46,7 +46,9 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
             elif data == b'GET':
                 conn.send(SERVER_VALUE)
                 print("GET", SERVER_VALUE.hex())
+            elif not data:
+                conn.shutdown(socket.SHUT_RDWR)
+                conn.close()
             else:
                 print("BAD COMMAND RECEIVED")
-            # conn.shutdown(socket.SHUT_RDWR)
-            # conn.close()
+

@@ -112,7 +112,7 @@ struct netif *app_netif;
 static struct tcp_pcb *c_pcb;
 char is_connected;
 
-// GPIO
+// GPIO Initialization
 XGpio gpio_btnc;
 XGpio gpio_btnd;
 XGpio gpio_btnl;
@@ -120,9 +120,153 @@ XGpio gpio_btnr;
 XGpio gpio_led;
 XGpio gpio_switch;
 
+// Button State for reading button presses on rising edge
+int prev_btn_state[5] = {0};
+#define DEBOUNCE_DELAY 1000
+
 // Server Values
-volatile uint32_t value_send = 0;
-volatile uint32_t value_recv = 0;
+uint32_t value_send = 0;
+uint32_t value_recv = 0;
+
+// Read Button Press (called in main infinite loop to monitor button press every iteration)
+int read_btn_press(XGpio *gpio, int *prev_btn_state) {
+	int curr_btn_state = XGpio_DiscreteRead(gpio, 1);
+
+	if (curr_btn_state & 0x01 && !(*prev_btn_state)) {
+		usleep(DEBOUNCE_DELAY); // Debounce
+
+		curr_btn_state = XGpio_DiscreteRead(gpio, 1); // Read button again to ensure press
+
+		if (curr_btn_state & 0x01) {
+			*prev_btn_state = curr_btn_state;
+			return 1; // Button press
+		}
+	}
+
+	*prev_btn_state = curr_btn_state;
+	return 0;
+}
+
+// Update MSB (read switches into value_send and value_recv into LED)
+void handle_btnl_action() {
+	value_send = (XGpio_DiscreteRead(&gpio_switch, 1) << 16) | (value_send & 0x0000FFFF);
+	XGpio_DiscreteWrite(&gpio_led, 1, (value_recv >> 16));
+	xil_printf("Updating value_send and value_recv.. (MSB)\n");
+	xil_printf("send = %x, recv = %x\n", value_send, value_recv);
+}
+
+// Update LSB (read switches into value_send and value_recv into LED)
+void handle_btnr_action() {
+	value_send = XGpio_DiscreteRead(&gpio_switch, 1) | (value_send & 0xFFFF0000);
+	XGpio_DiscreteWrite(&gpio_led, 1, (value_recv & 0x0000FFFF));
+	xil_printf("Updating value_send and value_recv.. (LSB)\n");
+	xil_printf("send = %x, recv = %x\n", value_send, value_recv);
+}
+
+// Send a packet with "GET"
+void send_GET() {
+	//Just send a single packet
+	u8_t apiflags = TCP_WRITE_FLAG_COPY | TCP_WRITE_FLAG_MORE;
+	char send_buf[3] = "GET";
+
+	//Loop until enough room in buffer (should be right away)
+	while (tcp_sndbuf(c_pcb) < sizeof(send_buf));
+
+	//Enqueue some data to send
+	err_t err = tcp_write(c_pcb, send_buf, sizeof(send_buf), apiflags);
+	if (err != ERR_OK) {
+		xil_printf("TCP client: Error on tcp_write: %d\n", err);
+		return;
+	}
+
+	//send the data packet
+	err = tcp_output(c_pcb);
+	if (err != ERR_OK) {
+		xil_printf("TCP client: Error on tcp_output: %d\n",err);
+		return;
+	}
+
+	xil_printf("GET Req sent\n");
+}
+
+// Send POST Req with 4 bytes of payload
+void send_POST(uint32_t val) {
+	//Just send a single packet
+	u8_t apiflags = TCP_WRITE_FLAG_COPY | TCP_WRITE_FLAG_MORE;
+	char send_buf[8];
+
+	memcpy(send_buf, "POST", 4);
+	uint32_t net_order = htonl(val); //Fix endianness
+	memcpy(send_buf+4, &net_order, sizeof(net_order));
+
+	//Loop until enough room in buffer (should be right away)
+	while (tcp_sndbuf(c_pcb) < sizeof(send_buf));
+
+	//Enqueue some data to send
+	err_t err = tcp_write(c_pcb, send_buf, sizeof(send_buf), apiflags);
+	if (err != ERR_OK) {
+		xil_printf("TCP client: Error on tcp_write: %d\n", err);
+		return;
+	}
+
+	//send the data packet
+	err = tcp_output(c_pcb);
+	if (err != ERR_OK) {
+		xil_printf("TCP client: Error on tcp_output: %d\n",err);
+		return;
+	}
+
+	xil_printf("POST req sent\n");
+}
+
+// Initialize all GPIO connections
+int GPIO_init() {
+    int gpio_status;
+
+    // Initialize BTNC GPIO
+    gpio_status = XGpio_Initialize(&gpio_btnc, XPAR_GPIO_BTNC_DEVICE_ID);
+    if (gpio_status != XST_SUCCESS) {
+        xil_printf("Error: Failed to initialize BTNC GPIO.\n");
+        return XST_FAILURE;
+    }
+
+    // Initialize BTND GPIO
+    gpio_status = XGpio_Initialize(&gpio_btnd, XPAR_GPIO_BTND_DEVICE_ID);
+    if (gpio_status != XST_SUCCESS) {
+        xil_printf("Error: Failed to initialize BTND GPIO.\n");
+        return XST_FAILURE;
+    }
+
+    // Initialize BTNL GPIO
+    gpio_status = XGpio_Initialize(&gpio_btnl, XPAR_GPIO_BTNL_DEVICE_ID);
+    if (gpio_status != XST_SUCCESS) {
+        xil_printf("Error: Failed to initialize BTNL GPIO.\n");
+        return XST_FAILURE;
+    }
+
+    // Initialize BTNR GPIO
+    gpio_status = XGpio_Initialize(&gpio_btnr, XPAR_GPIO_BTNR_DEVICE_ID);
+    if (gpio_status != XST_SUCCESS) {
+        xil_printf("Error: Failed to initialize BTNR GPIO.\n");
+        return XST_FAILURE;
+    }
+
+    // Initialize LED GPIO
+    gpio_status = XGpio_Initialize(&gpio_led, XPAR_GPIO_LED_DEVICE_ID);
+    if (gpio_status != XST_SUCCESS) {
+        xil_printf("Error: Failed to initialize LED GPIO.\n");
+        return XST_FAILURE;
+    }
+
+    // Initialize Switch GPIO
+    gpio_status = XGpio_Initialize(&gpio_switch, XPAR_GPIO_SWITCH_DEVICE_ID);
+    if (gpio_status != XST_SUCCESS) {
+        xil_printf("Error: Failed to initialize Switch GPIO.\n");
+        return XST_FAILURE;
+    }
+
+    return 0;
+}
 
 int main()
 {
@@ -141,14 +285,7 @@ int main()
 	init_platform();
 
 	//Initalize GPIO
-	int gpio_status; // Add error checking
-	gpio_status = XGpio_Initialize(&gpio_btnc, XPAR_GPIO_BTNC_DEVICE_ID);
-	gpio_status = XGpio_Initialize(&gpio_btnd, XPAR_GPIO_BTND_DEVICE_ID);
-	gpio_status = XGpio_Initialize(&gpio_btnl, XPAR_GPIO_BTNL_DEVICE_ID);
-	gpio_status = XGpio_Initialize(&gpio_btnr, XPAR_GPIO_BTNR_DEVICE_ID);
-	gpio_status = XGpio_Initialize(&gpio_led, XPAR_GPIO_LED_DEVICE_ID);
-	gpio_status = XGpio_Initialize(&gpio_switch, XPAR_GPIO_SWITCH_DEVICE_ID);
-
+	GPIO_init();
 
 	//Defualt IP parameter values
 #if LWIP_IPV6==0
@@ -235,10 +372,6 @@ int main()
 	//Setup connection
 	setup_client_conn();
 
-	// Button State for reading button presses on rising edge
-	int prev_btn_state[5] = {0};
-	int curr_btn_state[5] = {0};
-
 	//Event loop
 	while (1) {
 		//Call tcp_tmr functions
@@ -258,54 +391,22 @@ int main()
 		//ADD CODE HERE to be repeated constantly
 		// Note - should be non-blocking
 		// Note - can check is_connected global var to see if connection open
-		// Check for BTNL click
-		int btn_id = XPAR_GPIO_BTNL_DEVICE_ID;
-		curr_btn_state[btn_id] = XGpio_DiscreteRead(&gpio_btnl, 1);
 
-		if (curr_btn_state[btn_id] & 0x01 && !prev_btn_state[btn_id]) {
-			// Write 16 switches to MSB of value_send
-			value_send = XGpio_DiscreteRead(&gpio_switch, 1) << 16;
-
-			XGpio_DiscreteWrite(&gpio_led, 1, (value_recv >> 16));
-			xil_printf("Updating value_send and value_recv..\n");
-			xil_printf("send = %x, recv = %x", value_send, value_recv);
-		}
-
-		prev_btn_state[btn_id] = curr_btn_state[btn_id];
-
-		// Check for BTND click
-		btn_id = XPAR_GPIO_BTND_DEVICE_ID;
-		curr_btn_state[btn_id] = XGpio_DiscreteRead(&gpio_btnd, 1);
-		if (curr_btn_state[btn_id] & 0x01 && !prev_btn_state[btn_id]) {
-			//Just send a single packet
-			u8_t apiflags = TCP_WRITE_FLAG_COPY | TCP_WRITE_FLAG_MORE;
-			char send_buf[3] = "GET";
-
-			//Loop until enough room in buffer (should be right away)
-			while (tcp_sndbuf(c_pcb) < 3);
-
-			//Enqueue some data to send
-			err_t err = tcp_write(c_pcb, send_buf, 3, apiflags);
-			if (err != ERR_OK) {
-				xil_printf("TCP client: Error on tcp_write: %d\n", err);
-				return err;
-			}
-
-			//send the data packet
-			err = tcp_output(c_pcb);
-			if (err != ERR_OK) {
-				xil_printf("TCP client: Error on tcp_output: %d\n",err);
-				return err;
-			}
-
-			xil_printf("Packet data sent\n");
-		}
-
-		prev_btn_state[btn_id] = curr_btn_state[btn_id];
+        // Handle button actions
+        if(read_btn_press(&gpio_btnl, &prev_btn_state[XPAR_GPIO_BTNL_DEVICE_ID])) {
+            handle_btnl_action();
+        }
+        if(read_btn_press(&gpio_btnr, &prev_btn_state[XPAR_GPIO_BTNR_DEVICE_ID])) {
+            handle_btnr_action();
+        }
+        if(read_btn_press(&gpio_btnd, &prev_btn_state[XPAR_GPIO_BTND_DEVICE_ID])) {
+            send_GET();
+        }
+        if(read_btn_press(&gpio_btnc, &prev_btn_state[XPAR_GPIO_BTNC_DEVICE_ID])) {
+            send_POST(value_send);
+        }
 
 		//END OF ADDED CODE
-
-
 	}
 
 	//Never reached
@@ -438,40 +539,8 @@ static err_t tcp_client_connected(void *arg, struct tcp_pcb *tpcb, err_t err)
 
 
 	//ADD CODE HERE to do when connection established
-	// Commenting out original random packet being sent
-	//Just send a single packet
-//	u8_t apiflags = TCP_WRITE_FLAG_COPY | TCP_WRITE_FLAG_MORE;
-//	char send_buf[TCP_SEND_BUFSIZE];
-//	u32_t i;
-//
-//	for(i = 0; i < TCP_SEND_BUFSIZE-1; i = i + 1)
-//	{
-//		send_buf[i] = i+'a';
-//	}
-//	send_buf[TCP_SEND_BUFSIZE-1] = '\n';
-//
-//	//Loop until enough room in buffer (should be right away)
-//	while (tcp_sndbuf(c_pcb) < TCP_SEND_BUFSIZE);
-//
-//	//Enqueue some data to send
-//	err = tcp_write(c_pcb, send_buf, TCP_SEND_BUFSIZE, apiflags);
-//	if (err != ERR_OK) {
-//		xil_printf("TCP client: Error on tcp_write: %d\n", err);
-//		return err;
-//	}
-//
-//	//send the data packet
-//	err = tcp_output(c_pcb);
-//	if (err != ERR_OK) {
-//		xil_printf("TCP client: Error on tcp_output: %d\n",err);
-//		return err;
-//	}
-//
-//	xil_printf("Packet data sent\n");
 
 	//END OF ADDED CODE
-
-
 
 	return ERR_OK;
 }
@@ -485,14 +554,10 @@ static err_t tcp_client_recv(void *arg, struct tcp_pcb *tpcb, struct pbuf *p, er
 		return ERR_OK;
 	}
 
-
-	//ADD CODE HERE to do on packet reception
-	// TODO: save returned GET request from server into value_recv
-
 	//Print message
 	xil_printf("Packet received, %d bytes\n", p->tot_len);
 
-	// Copy to value recieved
+	// Copy packet data to value_recv
 	pbuf_copy_partial(p, &value_recv, p->tot_len, 0);
 	value_recv = ntohl(value_recv); // Fix endianness
 
