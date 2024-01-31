@@ -1,0 +1,14 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/commanderfranz/Desktop/EE324/6_SPI/SPI_Controller/SPI_Controller.srcs/sources_1/new/shifter.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module shifter
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/commanderfranz/Desktop/EE324/6_SPI/SPI_Controller/SPI_Controller.srcs/sources_1/new/register.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module register
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/commanderfranz/Desktop/EE324/6_SPI/SPI_Controller/SPI_Controller.srcs/sources_1/new/clk_80k.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module clk_80k
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/commanderfranz/Desktop/EE324/6_SPI/SPI_Controller/SPI_Controller.srcs/sources_1/new/spi.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module spi
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/commanderfranz/Desktop/EE324/6_SPI/SPI_Controller/SPI_Controller.srcs/sim_1/new/spitesttest.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module spitesttest
+WARNING: [VRFC 10-756] identifier i is used before its declaration [C:/Users/commanderfranz/Desktop/EE324/6_SPI/SPI_Controller/SPI_Controller.srcs/sim_1/new/spitesttest.v:49]
+WARNING: [VRFC 10-756] identifier i is used before its declaration [C:/Users/commanderfranz/Desktop/EE324/6_SPI/SPI_Controller/SPI_Controller.srcs/sim_1/new/spitesttest.v:51]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/commanderfranz/Desktop/EE324/6_SPI/SPI_Controller/SPI_Controller.sim/sim_1/behav/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl

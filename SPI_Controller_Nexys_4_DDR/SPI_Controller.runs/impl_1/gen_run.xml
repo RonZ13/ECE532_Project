@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenRun Id="impl_1" LaunchPart="xc7a100tcsg324-1" LaunchTime="1456011985">
+  <File Type="RUN-SRCS" Name="$PDATADIR/runs/impl_1/sources.xml"/>
+  <File Type="OPT-DCP" Name="spitest_opt.dcp"/>
+  <File Type="RUN-CONSTRS" Name="$PDATADIR/runs/impl_1/constrs_in.xml"/>
+  <File Type="OPT-DRC" Name="spitest_drc_opted.rpt"/>
+  <File Type="ROUTE-DCP" Name="spitest_routed.dcp"/>
+  <File Type="ROUTE-PWR" Name="spitest_power_routed.rpt"/>
+  <File Type="PA-TCL" Name="spitest.tcl"/>
+  <File Type="RUN-STRAT" Name="$PDATADIR/runs/impl_1/impl_1.psg"/>
+  <File Type="OPT-HWDEF" Name="spitest.hwdef"/>
+  <File Type="PWROPT-DCP" Name="spitest_pwropt.dcp"/>
+  <File Type="BG-DRC" Name="spitest.drc"/>
+  <File Type="PLACE-DCP" Name="spitest_placed.dcp"/>
+  <File Type="PLACE-IO" Name="spitest_io_placed.rpt"/>
+  <File Type="PLACE-UTIL" Name="spitest_utilization_placed.rpt"/>
+  <File Type="PLACE-UTIL-PB" Name="spitest_utilization_placed.pb"/>
+  <File Type="PLACE-CTRL" Name="spitest_control_sets_placed.rpt"/>
+  <File Type="PLACE-PRE-SIMILARITY" Name="spitest_incremental_reuse_pre_placed.rpt"/>
+  <File Type="BG-BGN" Name="spitest.bgn"/>
+  <File Type="POSTPLACE-PWROPT-DCP" Name="spitest_postplace_pwropt.dcp"/>
+  <File Type="BG-BIN" Name="spitest.bin"/>
+  <File Type="PHYSOPT-DCP" Name="spitest_physopt.dcp"/>
+  <File Type="ROUTE-CLK" Name="spitest_clock_utilization_routed.rpt"/>
+  <File Type="RDI-RDI" Name="spitest.vdi"/>
+  <File Type="BITSTR-MSK" Name="spitest.msk"/>
+  <File Type="ROUTE-DRC" Name="spitest_drc_routed.rpt"/>
+  <File Type="ROUTE-DRC-PB" Name="spitest_drc_routed.pb"/>
+  <File Type="ROUTE-PWR-SUM" Name="spitest_power_summary_routed.pb"/>
+  <File Type="ROUTE-STATUS" Name="spitest_route_status.rpt"/>
+  <File Type="ROUTE-STATUS-PB" Name="spitest_route_status.pb"/>
+  <File Type="ROUTE-TIMINGSUMMARY" Name="spitest_timing_summary_routed.rpt"/>
+  <File Type="ROUTE-TIMING-PB" Name="spitest_timing_summary_routed.pb"/>
+  <File Type="ROUTE-TIMING-RPX" Name="spitest_timing_summary_routed.rpx"/>
+  <File Type="POSTROUTE-PHYSOPT-DCP" Name="spitest_postroute_physopt.dcp"/>
+  <File Type="BG-BIT" Name="spitest.bit"/>
+  <File Type="BITSTR-RBT" Name="spitest.rbt"/>
+  <File Type="BITSTR-NKY" Name="spitest.nky"/>
+  <File Type="BITSTR-BMM" Name="spitest_bd.bmm"/>
+  <File Type="BITSTR-MMI" Name="spitest.mmi"/>
+  <File Type="BITSTR-SYSDEF" Name="spitest.sysdef"/>
+  <File Type="WBT-USG" Name="usage_statistics_webtalk.html"/>
+  <File Type="ROUTE-PWR-RPX" Name="spitest_power_routed.rpx"/>
+  <File Type="ROUTE-DRC-RPX" Name="spitest_drc_routed.rpx"/>
+  <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
+    <Filter Type="Srcs"/>
+    <File Path="$PSRCDIR/sources_1/imports/new/counter.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PSRCDIR/sources_1/new/counter.v"/>
+        <Attr Name="ImportTime" Val="1436756499"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/new/comparator.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PSRCDIR/sources_1/new/comparator.v"/>
+        <Attr Name="ImportTime" Val="1440548196"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/shifter.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/register.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/clk_80k.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/new/PWM.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PSRCDIR/sources_1/new/PWM.v"/>
+        <Attr Name="ImportTime" Val="1440545932"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/spi.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/spitest.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="DesignMode" Val="RTL"/>
+      <Option Name="TopModule" Val="spitest"/>
+      <Option Name="TopAutoSet" Val="TRUE"/>
+    </Config>
+  </FileSet>
+  <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1">
+    <Filter Type="Constrs"/>
+    <File Path="$PSRCDIR/constrs_1/new/Nexys_4_DDR_constraint.xdc">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="ConstrsType" Val="XDC"/>
+    </Config>
+  </FileSet>
+  <Strategy Version="1" Minor="2">
+    <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2015"/>
+    <Step Id="init_design"/>
+    <Step Id="opt_design"/>
+    <Step Id="power_opt_design"/>
+    <Step Id="place_design"/>
+    <Step Id="post_place_power_opt_design"/>
+    <Step Id="phys_opt_design"/>
+    <Step Id="route_design"/>
+    <Step Id="post_route_phys_opt_design"/>
+    <Step Id="write_bitstream"/>
+  </Strategy>
+</GenRun>

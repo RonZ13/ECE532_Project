@@ -1,0 +1,338 @@
+#-----------------------------------------------------------
+# Vivado v2015.4 (64-bit)
+# SW Build 1412921 on Wed Nov 18 09:43:45 MST 2015
+# IP Build 1412160 on Tue Nov 17 13:47:24 MST 2015
+# Start of session at: Sat Feb 20 15:46:25 2016
+# Process ID: 4192
+# Current directory: C:/Users/kfranz/Downloads/SPI_Controller/SPI_Controller_Nexys_4_DDR/SPI_Controller.runs/synth_1
+# Command line: vivado.exe -log spitest.vds -mode batch -messageDb vivado.pb -notrace -source spitest.tcl
+# Log file: C:/Users/kfranz/Downloads/SPI_Controller/SPI_Controller_Nexys_4_DDR/SPI_Controller.runs/synth_1/spitest.vds
+# Journal file: C:/Users/kfranz/Downloads/SPI_Controller/SPI_Controller_Nexys_4_DDR/SPI_Controller.runs/synth_1\vivado.jou
+#-----------------------------------------------------------
+source spitest.tcl -notrace
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:genesys2:part0:1.1 available at C:/Xilinx/Vivado/2015.4/data/boards/board_files/genesys2/H/board.xml as part xc7k325tffg900-2 specified in board_part file is either invalid or not available
+Command: synth_design -top spitest -part xc7a100tcsg324-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a100t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a100t'
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 268.594 ; gain = 98.145
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'spitest' [C:/Users/kfranz/Downloads/SPI_Controller/SPI_Controller_Nexys_4_DDR/SPI_Controller.srcs/sources_1/new/spitest.v:23]
+INFO: [Synth 8-638] synthesizing module 'spi' [C:/Users/kfranz/Downloads/SPI_Controller/SPI_Controller_Nexys_4_DDR/SPI_Controller.srcs/sources_1/new/spi.v:23]
+INFO: [Synth 8-638] synthesizing module 'register' [C:/Users/kfranz/Downloads/SPI_Controller/SPI_Controller_Nexys_4_DDR/SPI_Controller.srcs/sources_1/new/register.v:23]
+INFO: [Synth 8-256] done synthesizing module 'register' (1#1) [C:/Users/kfranz/Downloads/SPI_Controller/SPI_Controller_Nexys_4_DDR/SPI_Controller.srcs/sources_1/new/register.v:23]
+INFO: [Synth 8-638] synthesizing module 'shifter' [C:/Users/kfranz/Downloads/SPI_Controller/SPI_Controller_Nexys_4_DDR/SPI_Controller.srcs/sources_1/new/shifter.v:23]
+INFO: [Synth 8-256] done synthesizing module 'shifter' (2#1) [C:/Users/kfranz/Downloads/SPI_Controller/SPI_Controller_Nexys_4_DDR/SPI_Controller.srcs/sources_1/new/shifter.v:23]
+INFO: [Synth 8-638] synthesizing module 'clk_80k' [C:/Users/kfranz/Downloads/SPI_Controller/SPI_Controller_Nexys_4_DDR/SPI_Controller.srcs/sources_1/new/clk_80k.v:23]
+INFO: [Synth 8-256] done synthesizing module 'clk_80k' (3#1) [C:/Users/kfranz/Downloads/SPI_Controller/SPI_Controller_Nexys_4_DDR/SPI_Controller.srcs/sources_1/new/clk_80k.v:23]
+INFO: [Synth 8-256] done synthesizing module 'spi' (4#1) [C:/Users/kfranz/Downloads/SPI_Controller/SPI_Controller_Nexys_4_DDR/SPI_Controller.srcs/sources_1/new/spi.v:23]
+INFO: [Synth 8-638] synthesizing module 'PWM' [C:/Users/kfranz/Downloads/SPI_Controller/SPI_Controller_Nexys_4_DDR/SPI_Controller.srcs/sources_1/imports/new/PWM.v:1]
+INFO: [Synth 8-638] synthesizing module 'comparator' [C:/Users/kfranz/Downloads/SPI_Controller/SPI_Controller_Nexys_4_DDR/SPI_Controller.srcs/sources_1/imports/new/comparator.v:1]
+INFO: [Synth 8-256] done synthesizing module 'comparator' (5#1) [C:/Users/kfranz/Downloads/SPI_Controller/SPI_Controller_Nexys_4_DDR/SPI_Controller.srcs/sources_1/imports/new/comparator.v:1]
+INFO: [Synth 8-638] synthesizing module 'counter' [C:/Users/kfranz/Downloads/SPI_Controller/SPI_Controller_Nexys_4_DDR/SPI_Controller.srcs/sources_1/imports/new/counter.v:1]
+INFO: [Synth 8-256] done synthesizing module 'counter' (6#1) [C:/Users/kfranz/Downloads/SPI_Controller/SPI_Controller_Nexys_4_DDR/SPI_Controller.srcs/sources_1/imports/new/counter.v:1]
+INFO: [Synth 8-256] done synthesizing module 'PWM' (7#1) [C:/Users/kfranz/Downloads/SPI_Controller/SPI_Controller_Nexys_4_DDR/SPI_Controller.srcs/sources_1/imports/new/PWM.v:1]
+INFO: [Synth 8-256] done synthesizing module 'spitest' (8#1) [C:/Users/kfranz/Downloads/SPI_Controller/SPI_Controller_Nexys_4_DDR/SPI_Controller.srcs/sources_1/new/spitest.v:23]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 304.875 ; gain = 134.426
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 304.875 ; gain = 134.426
+---------------------------------------------------------------------------------
+INFO: [Device 21-403] Loading part xc7a100tcsg324-1
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [C:/Users/kfranz/Downloads/SPI_Controller/SPI_Controller_Nexys_4_DDR/SPI_Controller.srcs/constrs_1/new/Nexys_4_DDR_constraint.xdc]
+Finished Parsing XDC File [C:/Users/kfranz/Downloads/SPI_Controller/SPI_Controller_Nexys_4_DDR/SPI_Controller.srcs/constrs_1/new/Nexys_4_DDR_constraint.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Users/kfranz/Downloads/SPI_Controller/SPI_Controller_Nexys_4_DDR/SPI_Controller.srcs/constrs_1/new/Nexys_4_DDR_constraint.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/spitest_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/spitest_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Completed Processing XDC Constraints
+
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 590.891 ; gain = 0.000
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 590.891 ; gain = 420.441
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7a100tcsg324-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 590.891 ; gain = 420.441
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 590.891 ; gain = 420.441
+---------------------------------------------------------------------------------
+INFO: [Synth 8-5546] ROM "data_out" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "new_clk" won't be mapped to RAM because it is too sparse
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:13 ; elapsed = 00:00:15 . Memory (MB): peak = 590.891 ; gain = 420.441
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     11 Bit       Adders := 1     
+	   2 Input      5 Bit       Adders := 1     
++---Registers : 
+	               16 Bit    Registers := 1     
+	               12 Bit    Registers := 1     
+	               11 Bit    Registers := 1     
+	                5 Bit    Registers := 1     
+	                1 Bit    Registers := 2     
++---Muxes : 
+	   2 Input     11 Bit        Muxes := 1     
+	   2 Input      5 Bit        Muxes := 2     
+	   2 Input      1 Bit        Muxes := 4     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Hierarchical Component Statistics 
+---------------------------------------------------------------------------------
+Hierarchical RTL Component report 
+Module register 
+Detailed RTL Component Info : 
++---Registers : 
+	               16 Bit    Registers := 1     
+Module shifter 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      5 Bit       Adders := 1     
++---Registers : 
+	               12 Bit    Registers := 1     
+	                5 Bit    Registers := 1     
+	                1 Bit    Registers := 1     
++---Muxes : 
+	   2 Input      5 Bit        Muxes := 2     
+	   2 Input      1 Bit        Muxes := 3     
+Module clk_80k 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     11 Bit       Adders := 1     
++---Registers : 
+	               11 Bit    Registers := 1     
+	                1 Bit    Registers := 1     
++---Muxes : 
+	   2 Input     11 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 1     
+---------------------------------------------------------------------------------
+Finished RTL Hierarchical Component Statistics
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 240 (col length:80)
+BRAMs: 270 (col length: RAMB18 80 RAMB36 40)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+Start Parallel Synthesis Optimization  : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 590.891 ; gain = 420.441
+---------------------------------------------------------------------------------
+Start Cross Boundary Optimization
+---------------------------------------------------------------------------------
+INFO: [Synth 8-5546] ROM "control/signal/new_clk" won't be mapped to RAM because it is too sparse
+---------------------------------------------------------------------------------
+Finished Cross Boundary Optimization : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 590.891 ; gain = 420.441
+---------------------------------------------------------------------------------
+Finished Parallel Reinference  : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 590.891 ; gain = 420.441
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-3332] Sequential element (\control/one/data_out_reg[15] ) is unused and will be removed from module spitest.
+WARNING: [Synth 8-3332] Sequential element (\control/one/data_out_reg[14] ) is unused and will be removed from module spitest.
+WARNING: [Synth 8-3332] Sequential element (\control/one/data_out_reg[13] ) is unused and will be removed from module spitest.
+WARNING: [Synth 8-3332] Sequential element (\control/one/data_out_reg[12] ) is unused and will be removed from module spitest.
+---------------------------------------------------------------------------------
+Finished Area Optimization : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 590.891 ; gain = 420.441
+---------------------------------------------------------------------------------
+Finished Parallel Area Optimization  : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 590.891 ; gain = 420.441
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:26 ; elapsed = 00:00:28 . Memory (MB): peak = 590.891 ; gain = 420.441
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:27 ; elapsed = 00:00:28 . Memory (MB): peak = 590.891 ; gain = 420.441
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:27 ; elapsed = 00:00:28 . Memory (MB): peak = 590.891 ; gain = 420.441
+---------------------------------------------------------------------------------
+Finished Parallel Technology Mapping Optimization  : Time (s): cpu = 00:00:27 ; elapsed = 00:00:28 . Memory (MB): peak = 590.891 ; gain = 420.441
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+Finished Parallel Synthesis Optimization  : Time (s): cpu = 00:00:27 ; elapsed = 00:00:28 . Memory (MB): peak = 590.891 ; gain = 420.441
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:27 ; elapsed = 00:00:29 . Memory (MB): peak = 590.891 ; gain = 420.441
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:27 ; elapsed = 00:00:29 . Memory (MB): peak = 590.891 ; gain = 420.441
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:27 ; elapsed = 00:00:29 . Memory (MB): peak = 590.891 ; gain = 420.441
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:27 ; elapsed = 00:00:29 . Memory (MB): peak = 590.891 ; gain = 420.441
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:27 ; elapsed = 00:00:29 . Memory (MB): peak = 590.891 ; gain = 420.441
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:27 ; elapsed = 00:00:29 . Memory (MB): peak = 590.891 ; gain = 420.441
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+-------+------+
+|      |Cell   |Count |
++------+-------+------+
+|1     |BUFG   |     2|
+|2     |CARRY4 |     5|
+|3     |LUT1   |    14|
+|4     |LUT2   |     1|
+|5     |LUT3   |     4|
+|6     |LUT4   |    20|
+|7     |LUT5   |     6|
+|8     |LUT6   |     6|
+|9     |FDCE   |    29|
+|10    |FDPE   |     1|
+|11    |FDRE   |    24|
+|12    |IBUF   |     3|
+|13    |OBUF   |     3|
++------+-------+------+
+
+Report Instance Areas: 
++------+-----------+---------+------+
+|      |Instance   |Module   |Cells |
++------+-----------+---------+------+
+|1     |top        |         |   118|
+|2     |  control  |spi      |    68|
+|3     |    one    |register |    12|
+|4     |    signal |clk_80k  |    31|
+|5     |    two    |shifter  |    25|
+|6     |  wave     |PWM      |    41|
+|7     |    count  |counter  |    41|
++------+-----------+---------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:27 ; elapsed = 00:00:29 . Memory (MB): peak = 590.891 ; gain = 420.441
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 4 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:18 ; elapsed = 00:00:22 . Memory (MB): peak = 590.891 ; gain = 110.809
+Synthesis Optimization Complete : Time (s): cpu = 00:00:28 ; elapsed = 00:00:29 . Memory (MB): peak = 590.891 ; gain = 420.441
+INFO: [Project 1-571] Translating synthesized netlist
+INFO: [Netlist 29-17] Analyzing 8 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+INFO: [Common 17-83] Releasing license: Synthesis
+31 Infos, 5 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:27 ; elapsed = 00:00:28 . Memory (MB): peak = 590.891 ; gain = 403.574
+report_utilization: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.022 . Memory (MB): peak = 590.891 ; gain = 0.000
+INFO: [Common 17-206] Exiting Vivado at Sat Feb 20 15:46:56 2016...
