@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7a100tcsg324-1" LaunchTime="1456011985">
-  <File Type="RDS-DCP" Name="spitest.dcp"/>
-  <File Type="RUN-CONSTRS" Name="$PDATADIR/runs/synth_1/constrs_in.xml"/>
-  <File Type="RDS-UTIL-PB" Name="spitest_utilization_synth.pb"/>
-  <File Type="RUN-SRCS" Name="$PDATADIR/runs/synth_1/sources.xml"/>
+<GenRun Id="synth_1" LaunchPart="xc7a100tcsg324-1" LaunchTime="1706774764">
   <File Type="PA-TCL" Name="spitest.tcl"/>
+  <File Type="RDS-PROPCONSTRS" Name="spitest_drc_synth.rpt"/>
+  <File Type="REPORTS-TCL" Name="spitest_reports.tcl"/>
   <File Type="RDS-RDS" Name="spitest.vds"/>
-  <File Type="RUN-STRAT" Name="$PDATADIR/runs/synth_1/synth_1.psg"/>
   <File Type="RDS-UTIL" Name="spitest_utilization_synth.rpt"/>
+  <File Type="RDS-UTIL-PB" Name="spitest_utilization_synth.pb"/>
+  <File Type="RDS-DCP" Name="spitest.dcp"/>
+  <File Type="VDS-TIMINGSUMMARY" Name="spitest_timing_summary_synth.rpt"/>
+  <File Type="VDS-TIMING-PB" Name="spitest_timing_summary_synth.pb"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
     <Filter Type="Srcs"/>
-    <File Path="$PSRCDIR/sources_1/imports/new/counter.v">
+    <File Path="$PSRCDIR/sources_1/imports/new/PWM.v">
       <FileInfo>
-        <Attr Name="ImportPath" Val="$PSRCDIR/sources_1/new/counter.v"/>
-        <Attr Name="ImportTime" Val="1436756499"/>
+        <Attr Name="ImportPath" Val="$PPRDIR/../Additional Files/SPI_Controller_Nexys_4_DDR/SPI_Controller.srcs/sources_1/new/PWM.v"/>
+        <Attr Name="ImportTime" Val="1456000068"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
@@ -21,15 +22,17 @@
     </File>
     <File Path="$PSRCDIR/sources_1/imports/new/comparator.v">
       <FileInfo>
-        <Attr Name="ImportPath" Val="$PSRCDIR/sources_1/new/comparator.v"/>
-        <Attr Name="ImportTime" Val="1440548196"/>
+        <Attr Name="ImportPath" Val="$PPRDIR/../Additional Files/SPI_Controller_Nexys_4_DDR/SPI_Controller.srcs/sources_1/new/comparator.v"/>
+        <Attr Name="ImportTime" Val="1456000068"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PSRCDIR/sources_1/new/shifter.v">
+    <File Path="$PSRCDIR/sources_1/imports/new/counter.v">
       <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../Additional Files/SPI_Controller_Nexys_4_DDR/SPI_Controller.srcs/sources_1/new/counter.v"/>
+        <Attr Name="ImportTime" Val="1456000068"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
@@ -42,17 +45,8 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PSRCDIR/sources_1/new/clk_80k.v">
+    <File Path="$PSRCDIR/sources_1/new/shifter.v">
       <FileInfo>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="implementation"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
-    <File Path="$PSRCDIR/sources_1/imports/new/PWM.v">
-      <FileInfo>
-        <Attr Name="ImportPath" Val="$PSRCDIR/sources_1/new/PWM.v"/>
-        <Attr Name="ImportTime" Val="1440545932"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
@@ -65,8 +59,49 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PSRCDIR/sources_1/new/spitest.v">
+    <File Path="$PSRCDIR/sources_1/new/clk_gen.sv">
       <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/new/spitest.v">
+      <FileInfo SFType="SVerilog">
+        <Attr Name="ImportPath" Val="$PPRDIR/../Additional Files/SPI_Controller_Nexys_4_DDR/SPI_Controller.srcs/sources_1/new/spitest.v"/>
+        <Attr Name="ImportTime" Val="1456000068"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/clk_1M.sv">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/clk_slow.sv">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/clk_80k.v">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/bit_converter.sv">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
@@ -87,7 +122,14 @@
       </FileInfo>
     </File>
     <Config>
+      <Option Name="TargetConstrsFile" Val="$PSRCDIR/constrs_1/new/Nexys_4_DDR_constraint.xdc"/>
       <Option Name="ConstrsType" Val="XDC"/>
+    </Config>
+  </FileSet>
+  <FileSet Name="utils" Type="Utils" RelSrcDir="$PSRCDIR/utils_1">
+    <Filter Type="Utils"/>
+    <Config>
+      <Option Name="TopAutoSet" Val="TRUE"/>
     </Config>
   </FileSet>
   <Strategy Version="1" Minor="2">

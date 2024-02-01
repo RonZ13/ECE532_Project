@@ -20,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module spitest;
+module tb;
 
     reg MISO;
     reg clk;
@@ -29,16 +29,17 @@ module spitest;
     
     wire ss;
     wire [11:0] data;
+    wire sck;
     
     spi dut(
         .ss(ss),
         .MISO(MISO),
         .data(data),
         .clk(clk),
-        .rst(rst)
+        .rst(rst),
+        .sck(sck)
     );
         
-    integer i;
     initial begin
         MISO = 1;
         clk = 0;
@@ -46,9 +47,74 @@ module spitest;
         #100 rst = 1;
         #10 rst = 0;
         senddata = 16'h0555;
-        for (i=0;i<16;i=i+1) begin 
-            #12520 MISO = senddata[15-i];
-        end
+        @(negedge sck);
+        MISO = senddata[15];
+        @(negedge sck);
+        MISO = senddata[14];
+        @(negedge sck);
+        MISO = senddata[13];
+        @(negedge sck);
+        MISO = senddata[12];
+        @(negedge sck);
+        MISO = senddata[11];
+        @(negedge sck);
+        MISO = senddata[10];
+        @(negedge sck);
+        MISO = senddata[9];
+        @(negedge sck);
+        MISO = senddata[8];
+        @(negedge sck);
+        MISO = senddata[7];
+        @(negedge sck);
+        MISO = senddata[6];
+        @(negedge sck);
+        MISO = senddata[5];
+        @(negedge sck);
+        MISO = senddata[4];
+        @(negedge sck);
+        MISO = senddata[3];
+        @(negedge sck);
+        MISO = senddata[2];
+        @(negedge sck);
+        MISO = senddata[1];
+        @(negedge sck);
+        MISO = senddata[0];
+        
+        @(negedge sck);
+        @(negedge sck);
+        
+        @(negedge sck);
+        MISO = senddata[15];
+        @(negedge sck);
+        MISO = senddata[14];
+        @(negedge sck);
+        MISO = senddata[13];
+        @(negedge sck);
+        MISO = senddata[12];
+        @(negedge sck);
+        MISO = senddata[11];
+        @(negedge sck);
+        MISO = senddata[10];
+        @(negedge sck);
+        MISO = senddata[9];
+        @(negedge sck);
+        MISO = senddata[8];
+        @(negedge sck);
+        MISO = senddata[7];
+        @(negedge sck);
+        MISO = senddata[6];
+        @(negedge sck);
+        MISO = senddata[5];
+        @(negedge sck);
+        MISO = senddata[4];
+        @(negedge sck);
+        MISO = senddata[3];
+        @(negedge sck);
+        MISO = senddata[2];
+        @(negedge sck);
+        MISO = senddata[1];
+        @(negedge sck);
+        MISO = senddata[0];
     end
     
     always begin

@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 10/03/2015 07:31:00 PM
+// Create Date: 12/17/2015 11:37:02 PM
 // Design Name: 
-// Module Name: Clk_Div_10k
+// Module Name: spitest
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,25 +20,34 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module Clk_Div_80k(
+module spitest(
+    input MISO,
     input clk,
     input rst,
-    output clk_10k
+    input [11:0] swt,
+    output PWM,
+    output ss,
+    output sck,
+    output [11:0] led
+    
     );
-   
-        wire [7:0] count_net;
-        
-        comparator9 compare (
-        .A(8'b11010000),
-        .B(count_net),
-        .PWM(clk_10k)
-        );
-        
-        counter9 count (
-        .clr(rst),
+    
+    wire [11:0] data;
+    spi control(
+        .ss(ss),
+        .MISO(MISO),
+        .data(data),
         .clk(clk),
-        .count(count_net)  
-        );
-        
-       
+        .rst(rst),
+        .sck(sck)
+    );
+    
+    PWM wave (
+        .A(data),
+        .clk(clk),
+        .rst(rst),
+        .PWM(PWM)
+    );
+    
+    assign led = data;
 endmodule

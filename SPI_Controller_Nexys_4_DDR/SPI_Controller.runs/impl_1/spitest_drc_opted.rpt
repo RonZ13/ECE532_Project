@@ -1,10 +1,14 @@
-Copyright 1986-2015 Xilinx, Inc. All Rights Reserved.
-------------------------------------------------------------------------------------
-| Tool Version : Vivado v.2015.4 (win64) Build 1412921 Wed Nov 18 09:43:45 MST 2015
-| Date         : Sat Feb 20 15:47:27 2016
-| Host         : WK84 running 64-bit major release  (build 9200)
-| Command      : report_drc
-------------------------------------------------------------------------------------
+Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
+| Date         : Thu Feb  1 03:09:47 2024
+| Host         : Ron5890 running 64-bit major release  (build 9200)
+| Command      : report_drc -file spitest_drc_opted.rpt -pb spitest_drc_opted.pb -rpx spitest_drc_opted.rpx
+| Design       : spitest
+| Device       : xc7a100tcsg324-1
+| Speed File   : -1
+| Design State : Synthesized
+------------------------------------------------------------------------------------------------------------
 
 Report DRC
 
@@ -21,6 +25,11 @@ Table of Contents
            Ruledeck: default
              Max violations: <unlimited>
              Violations found: 1
++----------+----------+-----------------------------------------------------+------------+
+| Rule     | Severity | Description                                         | Violations |
++----------+----------+-----------------------------------------------------+------------+
+| CFGBVS-1 | Warning  | Missing CFGBVS and CONFIG_VOLTAGE Design Properties | 1          |
++----------+----------+-----------------------------------------------------+------------+
 
 2. REPORT DETAILS
 -----------------

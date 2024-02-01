@@ -31,9 +31,9 @@ module register(
     always @ (posedge clk, posedge rst)
     begin
         if (rst == 1'b1) begin
-            data_out = 16'b0;
+            data_out <= 16'b0;
         end else begin
-            data_out = {data_out[14:0], data_in};
+            data_out <= {data_out[14:0], data_in};
         end
     end
 endmodule

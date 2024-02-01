@@ -29,13 +29,13 @@ module spi(
     output sck
     );
     
-    wire clk_80k_net;
+    wire clk_slow;
     wire [4:0] count_net;
     wire [15:0] data_net;
     
     register one (
         .rst(rst),
-        .clk(clk_80k_net),
+        .clk(clk_slow),
         .count(count_net),
         .data_out(data_net),
         .data_in(MISO)
@@ -44,18 +44,18 @@ module spi(
     shifter two (
         .ss(ss),
         .rst(rst),
-        .clk_80k(clk_80k_net),
+        .clk(clk_slow),
         .data_in(data_net),
         .data_out(data),
         .count(count_net)
     );
           
-    clk_80k signal (
+    clk_gen signal (
         .clk(clk),
         .rst(rst),
-        .new_clk(clk_80k_net)
+        .sck(clk_slow)
     );
             
-    assign sck = clk_80k_net;
+    assign sck = clk_slow;
     
 endmodule
