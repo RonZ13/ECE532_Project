@@ -88,12 +88,17 @@ set_property MARK_DEBUG true [get_nets {led_OBUF[6]}]
 set_property MARK_DEBUG true [get_nets {led_OBUF[7]}]
 set_property MARK_DEBUG true [get_nets {led_OBUF[9]}]
 set_property MARK_DEBUG true [get_nets {led_OBUF[11]}]
-set_property MARK_DEBUG false [get_nets PWM_OBUF]
 set_property MARK_DEBUG true [get_nets ss_OBUF]
 
 
 set_property MARK_DEBUG true [get_nets MISO_IBUF]
 
+
+set_property MARK_DEBUG true [get_nets sck_OBUF]
+connect_debug_port u_ila_0/probe1 [get_nets [list {debug_data[0]} {debug_data[1]} {debug_data[2]} {debug_data[3]} {debug_data[4]} {debug_data[5]} {debug_data[6]} {debug_data[7]} {debug_data[8]} {debug_data[9]} {debug_data[10]} {debug_data[11]}]]
+
+
+set_property MARK_DEBUG true [get_nets PWM_OBUF]
 create_debug_core u_ila_0 ila
 set_property ALL_PROBE_SAME_MU true [get_debug_cores u_ila_0]
 set_property ALL_PROBE_SAME_MU_CNT 1 [get_debug_cores u_ila_0]
@@ -106,8 +111,8 @@ set_property C_TRIGOUT_EN false [get_debug_cores u_ila_0]
 set_property port_width 1 [get_debug_ports u_ila_0/clk]
 connect_debug_port u_ila_0/clk [get_nets [list clk_IBUF_BUFG]]
 set_property PROBE_TYPE DATA_AND_TRIGGER [get_debug_ports u_ila_0/probe0]
-set_property port_width 12 [get_debug_ports u_ila_0/probe0]
-connect_debug_port u_ila_0/probe0 [get_nets [list {led_OBUF[0]} {led_OBUF[1]} {led_OBUF[2]} {led_OBUF[3]} {led_OBUF[4]} {led_OBUF[5]} {led_OBUF[6]} {led_OBUF[7]} {led_OBUF[8]} {led_OBUF[9]} {led_OBUF[10]} {led_OBUF[11]}]]
+set_property port_width 11 [get_debug_ports u_ila_0/probe0]
+connect_debug_port u_ila_0/probe0 [get_nets [list {led_OBUF[0]} {led_OBUF[1]} {led_OBUF[2]} {led_OBUF[3]} {led_OBUF[4]} {led_OBUF[5]} {led_OBUF[6]} {led_OBUF[7]} {led_OBUF[8]} {led_OBUF[9]} {led_OBUF[10]}]]
 create_debug_port u_ila_0 probe
 set_property PROBE_TYPE DATA_AND_TRIGGER [get_debug_ports u_ila_0/probe1]
 set_property port_width 1 [get_debug_ports u_ila_0/probe1]
@@ -115,7 +120,15 @@ connect_debug_port u_ila_0/probe1 [get_nets [list MISO_IBUF]]
 create_debug_port u_ila_0 probe
 set_property PROBE_TYPE DATA_AND_TRIGGER [get_debug_ports u_ila_0/probe2]
 set_property port_width 1 [get_debug_ports u_ila_0/probe2]
-connect_debug_port u_ila_0/probe2 [get_nets [list ss_OBUF]]
+connect_debug_port u_ila_0/probe2 [get_nets [list PWM_OBUF]]
+create_debug_port u_ila_0 probe
+set_property PROBE_TYPE DATA_AND_TRIGGER [get_debug_ports u_ila_0/probe3]
+set_property port_width 1 [get_debug_ports u_ila_0/probe3]
+connect_debug_port u_ila_0/probe3 [get_nets [list sck_OBUF]]
+create_debug_port u_ila_0 probe
+set_property PROBE_TYPE DATA_AND_TRIGGER [get_debug_ports u_ila_0/probe4]
+set_property port_width 1 [get_debug_ports u_ila_0/probe4]
+connect_debug_port u_ila_0/probe4 [get_nets [list ss_OBUF]]
 set_property C_CLK_INPUT_FREQ_HZ 300000000 [get_debug_cores dbg_hub]
 set_property C_ENABLE_CLK_DIVIDER false [get_debug_cores dbg_hub]
 set_property C_USER_SCAN_CHAIN 1 [get_debug_cores dbg_hub]

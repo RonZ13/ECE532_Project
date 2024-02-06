@@ -23,7 +23,8 @@
 module spi(
     output ss,
     input MISO,
-    output [11:0] data,
+    output [11:0] volume_out,
+    output [11:0] shifted_PCM_out,
     input clk,
     input rst,
     output sck
@@ -33,7 +34,7 @@ module spi(
     wire [4:0] count_net;
     wire [15:0] data_net;
     
-    register one (
+    register serial2parallel (
         .rst(rst),
         .clk(clk_slow),
         .count(count_net),
@@ -41,12 +42,13 @@ module spi(
         .data_in(MISO)
     );
         
-    shifter two (
+    shifter removezero (
         .ss(ss),
         .rst(rst),
         .clk(clk_slow),
         .data_in(data_net),
-        .data_out(data),
+        .volume_out(volume_out),
+        .shifted_PCM_out(shifted_PCM_out),
         .count(count_net)
     );
           

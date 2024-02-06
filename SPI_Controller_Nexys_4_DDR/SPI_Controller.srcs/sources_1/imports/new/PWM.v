@@ -2,19 +2,21 @@ module PWM (
     input [11:0] A,
     input clk,
     input rst,
+    input ss,
     output PWM
     );
     
-    wire [12:0] count_net;
+    wire [11:0] count_net;
     
     comparator compare (
-        .A({1'b0, A[11:8]}),
-        .B(count_net[3:0]),
+        .A(A),
+        .B(count_net),
         .PWM(PWM)
     );
     
     counter count (
-        .clr(rst),
+        .rst(rst),
+        .ss(ss),
         .clk(clk),
         .count(count_net)  
     );

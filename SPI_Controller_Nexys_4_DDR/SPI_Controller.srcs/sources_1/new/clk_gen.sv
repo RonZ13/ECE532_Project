@@ -31,7 +31,7 @@ module clk_gen(
         if (rst == 1'b1) begin 
             sck <= 1'b0;
             counter <= 1'b0;
-        end else if (counter == 8'd113) begin
+        end else if (counter == 8'd120) begin
             sck <= ~sck;
             counter <= 1'b0;
         end else begin 

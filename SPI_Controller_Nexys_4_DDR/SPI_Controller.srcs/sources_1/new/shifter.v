@@ -25,25 +25,30 @@ module shifter(
     input rst,
     input clk,
     input [15:0] data_in,
-    output reg [11:0] data_out,
+    output reg [11:0] volume_out,
+    output reg [11:0] shifted_PCM_out,
     output reg [4:0] count
     );
     
     always @ (posedge clk, posedge rst) begin
         if (rst == 1'b1) begin
-            data_out <= 12'b0;
+            shifted_PCM_out <= 12'b0;
+            volume_out <= 12'b0;
             count <= 5'b0;
             ss <= 1'b1;
-        end else if (count == 5'd17) begin // remove the leading zeros
-            count <= count + 1'b1;
-            data_out <= data_in[11:0];
+        end else if (count == 5'd16) begin // remove the leading zeros
+            count <= 1'b0;
             ss <= 1'b1;
-        end else if (count == 5'd18) begin
-            count <= 5'b1;
-            data_out <= data_out;
-            ss <= 1'b0;
+            if (data_in[11] == 1) begin
+                shifted_PCM_out <= 12'h800 + {1'b0, data_in[10:0]};
+                volume_out <= {1'b0, data_in[10:0]};
+            end else begin
+                shifted_PCM_out <= 12'h800 - {1'b0, ~data_in[10:0]};
+                volume_out <= {1'b0, ~data_in[10:0]};
+            end
         end else begin
-            data_out <= data_out;
+            shifted_PCM_out <= shifted_PCM_out;
+            volume_out <= volume_out;
             count <= count + 1'b1;
             ss <= 1'b0;
         end
