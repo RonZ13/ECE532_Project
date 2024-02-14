@@ -88,8 +88,8 @@ module seg7decimal(
     end
 
     always @(*) begin
-        an=8'b11111111;
-        if(aen[s] == 1) an[s] = 0;
+        an = 8'b11111111;
+        if (aen[s] == 1) an[s] = 0;
     end
 
 

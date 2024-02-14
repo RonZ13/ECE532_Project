@@ -39,3 +39,7 @@ set_property src_info {type:XDC file:1 line:229 export:INPUT save:INPUT read:REA
 set_property -dict {PACKAGE_PIN F4 IOSTANDARD LVCMOS33} [get_ports PS2_CLK]
 set_property src_info {type:XDC file:1 line:230 export:INPUT save:INPUT read:READ} [current_design]
 set_property -dict {PACKAGE_PIN B2 IOSTANDARD LVCMOS33} [get_ports PS2_DATA]
+set_property src_info {type:XDC file:1 line:262 export:INPUT save:INPUT read:READ} [current_design]
+set_property MARK_DEBUG true [get_nets PS2_CLK_IBUF]
+set_property src_info {type:XDC file:1 line:263 export:INPUT save:INPUT read:READ} [current_design]
+set_property MARK_DEBUG true [get_nets PS2_DATA_IBUF]

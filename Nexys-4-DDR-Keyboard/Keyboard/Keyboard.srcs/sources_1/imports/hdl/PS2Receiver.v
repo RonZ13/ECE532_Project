@@ -64,8 +64,9 @@ module PS2Receiver(
                 9:flag <= 1'b1;
                 10:flag <= 1'b0;
             endcase
-            if(cnt <= 9) cnt <= cnt + 1;
-            else if(cnt == 10) cnt <= 0;
+
+            if (cnt <= 9) cnt <= cnt + 1;
+            else if (cnt == 10) cnt <= 0;
         end
     end
 
