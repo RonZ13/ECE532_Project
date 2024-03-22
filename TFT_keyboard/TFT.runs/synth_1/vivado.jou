@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2018.3.1 (64-bit)
+# SW Build 2489853 on Tue Mar 26 04:20:25 MDT 2019
+# IP Build 2486929 on Tue Mar 26 06:44:21 MDT 2019
+# Start of session at: Tue Mar 19 19:00:51 2024
+# Process ID: 6580
+# Current directory: C:/Users/zhan6738/TFT_keyboard/TFT.runs/synth_1
+# Command line: vivado.exe -log design_1_wrapper.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source design_1_wrapper.tcl
+# Log file: C:/Users/zhan6738/TFT_keyboard/TFT.runs/synth_1/design_1_wrapper.vds
+# Journal file: C:/Users/zhan6738/TFT_keyboard/TFT.runs/synth_1\vivado.jou
+#-----------------------------------------------------------
+source design_1_wrapper.tcl -notrace

@@ -1,0 +1,170 @@
+
+#include "VGA.h"
+#include "keyboard.h"
+
+
+int main(void){
+
+	int* front = (int*) DDR_addr;
+	int* back = (int*) frame_buf_addr;
+
+	// azure
+	color lettercolor = {0x0, 0xa, 0xa};
+	// blue
+	color blue = {0x0, 0x0, 0xf};
+	// red
+	color red = {0xf, 0x0, 0x0};
+
+	// screen setup
+	disableVGA(TFT_addr);
+	setVideoMemAddr(TFT_addr, front);
+	clearScreen(DDR_addr);
+	clearScreen(frame_buf_addr);
+	enableVGA(TFT_addr);
+
+	int i, j;
+	int base_x = 10;
+	int base_y = 10;
+	text front_old_chr;
+	text back_old_chr;
+
+	text* arr[] = {&letter_A, &letter_B, &letter_C, &letter_D, &letter_E, &letter_F, &letter_G,
+				   &letter_H, &letter_I, &letter_J, &letter_K, &letter_L, &letter_M, &letter_N,
+				   &letter_O, &letter_P, &letter_Q, &letter_R, &letter_S, &letter_T, &letter_U,
+				   &letter_V, &letter_W, &letter_X, &letter_Y, &letter_Z,
+				   &letter_a, &letter_b, &letter_c, &letter_d, &letter_e, &letter_f, &letter_g,
+				   &letter_h, &letter_i, &letter_j, &letter_k, &letter_l, &letter_m, &letter_n,
+				   &letter_o, &letter_p, &letter_q, &letter_r, &letter_s, &letter_t, &letter_u,
+				   &letter_v, &letter_w, &letter_x, &letter_y, &letter_z, &letter_space};
+
+	int font = 5;
+	int songbox_select = 0;	// only 2 songboxs so 0, 1 are accepted
+	selectSongBox(&front, songbox_select, font);
+
+	int playbutton_select = 0;
+	selectPlayButton(&front, playbutton_select, font);
+
+	int is_pause = 1;
+
+	interact state = previous;
+
+	keyboard_Start();
+	xil_printf ("\r\nPS/2 Keyboard init sequence finished\n");
+	while(1){
+
+		if (!is_pause){
+			// animation here, moving a square for example
+			int size = 10;
+			for (i = 0; i < size; i++) {
+				for (j = 0; j < size; j++) {
+					writeRGB(front, i+base_x, j+base_y, blue);
+				}
+			}
+			base_x += 10;
+			usleep(10);
+		}
+
+
+		// handling keyboard input
+		if (keyboard_inputs_head != keyboard_inputs_tail){
+			const char* character =  keys[keyboard_inputs[keyboard_inputs_head]];
+			keyboard_inputs_head++;
+			keyboard_inputs_head %= NUM_KB_I_FIFO;
+
+			xil_printf (character);
+
+//			// "enter" for nextline
+//			if (strcmp(character, "\r\n") == 0){
+//				base_y = base_y + 5 + font*7;
+//				base_x = 10;
+//				continue;
+//			}
+
+			// "enter" for select
+			if (strcmp(character, "\r\n") == 0){
+				if (songbox_select) {
+					is_pause = 1;
+				} else {
+					is_pause = 0;
+				}
+				continue;
+			}
+
+//			// select up button pressed
+//			if ((strcmp(character, "KP8") == 0) ||
+//				(strcmp(character, "KP2") == 0)	){
+//				songbox_select = (songbox_select == 0);
+//				selectSongBox(&front, songbox_select, font);
+//				continue;
+//			}
+
+			// select up button pressed
+			if ((strcmp(character, "KP8") == 0)){
+				if (state == next){
+					state = previous;
+				}
+
+				if (state == replay) {
+					state = pause;
+				}
+
+				continue;
+			}
+
+			// select down button pressed
+			if ((strcmp(character, "KP2") == 0)){
+				if (state == previous){
+					state = next;
+					plotButton(&front, state, font);
+				}
+
+				if (state == pause) {
+					state = replay;
+
+				}
+
+				continue;
+			}
+
+			// select left button pressed
+			if ((strcmp(character, "KP4") == 0)){
+				if (state == pause){
+					state = previous;
+				}
+
+				if (state == replay) {
+					state = next;
+				}
+
+				continue;
+			}
+
+			// select right button pressed
+			if ((strcmp(character, "KP6") == 0)){
+				if (state == previous){
+					state = pause;
+				}
+
+				if (state == next) {
+					state = replay;
+				}
+
+				continue;
+			}
+
+
+//			// print char on screen
+//			for (i = 0; i < 53; i++) {
+//				if (*character == arr[i]->character){
+//					printChr(&front, *arr[i], font, lettercolor, base_x, base_y);
+//					base_x = base_x + 5 + font*arr[i]->col;
+//				}
+//			}
+		}
+	}
+
+
+
+	keyboard_End();
+	return 0;
+}
