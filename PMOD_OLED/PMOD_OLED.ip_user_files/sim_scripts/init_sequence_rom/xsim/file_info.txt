@@ -1,2 +1,0 @@
-init_sequence_rom.v,verilog,xil_defaultlib,../../../ip/init_sequence_rom/sim/init_sequence_rom.v,
-glbl.v,Verilog,xil_defaultlib,glbl.v

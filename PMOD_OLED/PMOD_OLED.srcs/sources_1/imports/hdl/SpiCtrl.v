@@ -43,54 +43,61 @@ module SpiCtrl (
     assign CS = (state != Send && state != HoldCS) ? 1'b1 : 1'b0;
     assign send_ready = (state == Idle && send_start == 1'b0) ? 1'b1 : 1'b0;
     
-    always@(posedge clk)
+    always@(posedge clk) begin
         case (state)
-        Idle: begin
-            if (send_start == 1'b1)
-                state <= Send;
-        end
-        Send: begin
-            if (shift_counter == 8 && counter == COUNTER_MID) begin
-                state <= HoldCS;
+            Idle: begin
+                if (send_start == 1'b1) begin
+                    state <= Send;
+                end
             end
-        end
-        HoldCS: begin
-            if (shift_counter == 4'd3)
-                state <= Hold;
-        end
-        Hold: begin
-            if (send_start == 1'b0)
-                state <= Idle;
-        end
+            Send: begin
+                if (shift_counter == 8 && counter == COUNTER_MID) begin
+                    state <= HoldCS;
+                end
+            end
+            HoldCS: begin
+                if (shift_counter == 4'd3) begin
+                    state <= Hold;
+                end
+            end
+            Hold: begin
+                if (send_start == 1'b0) begin
+                    state <= Idle;
+                end
+            end
         endcase
-    always@(posedge clk)
+    end
+    
+    always@(posedge clk) begin
         if (state == Send && ~(counter == COUNTER_MID && shift_counter == 8)) begin
-            if (counter == COUNTER_MAX)
+            if (counter == COUNTER_MAX) begin
                 counter <= 0;
-            else
+            end else begin
                 counter <= counter + 1'b1;
-        end else
+            end
+        end else begin
             counter <= 'b0;
-    always@(posedge clk)
+        end
+    end
+
+    always@(posedge clk) begin
         if (state == Idle) begin
             shift_counter <= 'b0;
             shift_register <= send_data;
             temp_sdo <= 1'b1;
-        end
-        else if (state == Send) begin
+        end else if (state == Send) begin
             if (counter == COUNTER_MID) begin
-//                falling <= 1'b1;
                 temp_sdo <= shift_register[7];
                 shift_register <= {shift_register[6:0], 1'b0};
-                if (shift_counter == 4'b1000)
+                if (shift_counter == 8) begin
                     shift_counter <= 'b0;
-                else
+                end else begin
                     shift_counter <= shift_counter + 1'b1;
+                end
             end
-//            end else if (clk_divided <= 1'b1)
-//                falling <= 1'b0;
-        end
-        else if (state == HoldCS) begin
+        end else if (state == HoldCS) begin
             shift_counter <= shift_counter + 1'b1;
         end
+    end
+
 endmodule

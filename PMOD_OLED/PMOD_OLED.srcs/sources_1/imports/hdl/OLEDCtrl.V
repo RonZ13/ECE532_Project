@@ -20,35 +20,18 @@
 module OLEDCtrl (
 	input 		clk,
 	
-	//Write command pins, when write_start asserted high, load pixel data for ascii character into local memory at address.
-	//When ready to use / operation completed, assert write_ready high - start ignored when display off or machine is otherwise busy.
-	input 		write_start,		//inserts an ascii character's bitmap into display memory at specified address
-	input [7:0] write_ascii_data,	//ascii value of character to add to memory
-	input [8:0] write_base_addr,	//on screen address of character to add {y[1:0], x[3:0], 3'b0}
-	output wire write_ready,		//end of character bitmap write sequence
-	
-	//Update command pins, when update_start asserted high, send pixel data contents of local memory - or zeroes if update_clear asserted - to OLED over SPI.
-	//When ready to use / operation completed, assert update_ready high - start ignored when display off or machine is otherwise busy.
-	input 		update_start,	//updates oled display with memory contents
-    input       update_clear,
-	output wire update_ready,	//end of update sequence flag
-	
 	//Display On command pins, when disp_on_start asserted high, do initialization sequence as per spec.
 	//When ready to use / operation completed, assert disp_on_ready high - start ignored when display is already on.
 	input  		disp_on_start,	//starts initialization sequence
-	output wire disp_on_ready,	//end of startup sequence flag
+	output reg  disp_on_ready,	//end of startup sequence flag
 	
 	//Display Off command pins, when disp_off_start asserted high, do safe shutdown sequence as per spec.
 	//When ready to use / operation completed, assert update_ready high - start ignored when display off or machine is otherwise busy.
 	input  		disp_off_start,	//starts shutdown sequence
-	output wire disp_off_ready,	//shutdown sequence available flag
-	
-	//Toggle Display command pins, when toggle_disp_start asserted high, sends commands to turn all display pixels on / revert to original state.
-	//When ready to use / operation completed, toggle_disp_ready asserted high - start ignored when display off or machine is otherwise busy.
-	input       toggle_disp_start,
-	output wire toggle_disp_ready,
+	output reg  disp_off_ready,	//shutdown sequence available flag
 	
 	//OLED command pins
+    output wire CS,
 	output wire SDIN,
 	output wire SCLK,
 	output wire DC,
@@ -63,25 +46,15 @@ localparam Idle                 = 8'h00;
 localparam Startup              = 8'h10;
 localparam StartupFetch         = 8'h11;
 //ACTIVE STATES
-localparam ActiveWait           = 8'h20;
-localparam ActiveUpdatePage     = 8'h21;
-localparam ActiveUpdateScreen   = 8'h22;
-localparam ActiveSendByte       = 8'h23;
-localparam ActiveUpdateWait     = 8'h24;
-localparam ActiveToggleDisp     = 8'h25;
-localparam ActiveToggleDispWait = 8'h26;
-localparam ActiveWrite          = 8'h27;
-localparam ActiveWriteTran      = 8'h28;
-localparam ActiveWriteWait      = 8'h29;
+localparam Active               = 8'h20;
 //BRINGDOWN STATES
 localparam BringdownDispOff     = 8'h30;
-localparam BringdownVCCENOff     = 8'h31;
+localparam BringdownVCCENOff    = 8'h31;
 localparam BringdownDelay       = 8'h32;
-localparam BringdownPMODENOff      = 8'h33;
+localparam BringdownPMODENOff   = 8'h33;
 //UTILITY/MISCELLANEOUS STATES
-localparam UtilitySpiWait      = 8'h41;
-localparam UtilityDelayWait    = 8'h42;
-localparam UtilityFullDispWait = 8'h43;
+localparam UtilitySpiWait       = 8'h41;
+localparam UtilityDelayWait     = 8'h42;
 
 /*
 - Details of OLED Commands can be found in the Solomon Systech SSD1306 Datasheet
@@ -89,15 +62,6 @@ localparam UtilityFullDispWait = 8'h43;
 
 reg   [7:0] state              = Idle;
 reg   [7:0] after_state        = Idle;
-reg   [7:0] after_page_state   = Idle;
-reg   [7:0] after_char_state   = Idle;
-reg   [7:0] after_update_state = Idle;
-reg         disp_is_full = 0;
-reg         clear_screen = 0;
-
-reg   [2:0] update_page_count=0;
-reg   [1:0] temp_page=0;
-reg   [6:0] temp_index=0;
 
 reg 	   	oled_dc=1;
 reg 	   	oled_res=1;
@@ -112,20 +76,14 @@ reg 		temp_delay_start=0;
 reg  [11:0] temp_delay_ms=0;
 wire 		temp_delay_done;
 
-reg   [7:0] temp_write_ascii=0;
-reg   [8:0] temp_write_base_addr=0;
+reg  [15:0] init_operation;
+reg   [6:0] startup_count=0;
+reg  [15:0] init_sequence_rom [0:66];
 
-wire  [9:0] char_lib_addr;
-wire  [8:0] pbuf_read_addr;
-wire  [7:0] pbuf_read_data;
-wire        pbuf_write_en;
-wire  [7:0] pbuf_write_data;
-wire  [8:0] pbuf_write_addr;
+initial begin
+    $readmemh("init_sequence.mem", init_sequence_rom);
+end
 
-reg   [2:0] write_byte_count=0;
-
-wire [15:0] init_operation;
-reg   [3:0] startup_count=0;
 reg         iop_state_select=0;
 reg         iop_res_set=0;
 reg         iop_res_val=0;
@@ -136,10 +94,10 @@ reg         iop_PMODEN_val=0;
 reg   [7:0] iop_data=0;
 
 //non-spi oled control signals
-assign DC   = oled_dc;
-assign RES  = oled_res;
+assign DC      = oled_dc;
+assign RES     = oled_res;
 assign PMODEN  = oled_pmoden;
-assign VCCEN = oled_vccen;
+assign VCCEN   = oled_vccen;
 
 //controller for spi connection to oled
 SpiCtrl SPI_CTRL (
@@ -160,130 +118,87 @@ delay_ms MS_DELAY (
     .delay_done		(temp_delay_done)
 );
 
-//combinatorial control signals for memories
-assign pbuf_read_addr = {temp_page, temp_index};
-assign char_lib_addr = {temp_write_ascii, write_byte_count};
-assign pbuf_write_en = (state == ActiveWrite) ? 1'b1 : 1'b0;
-assign pbuf_write_addr = temp_write_base_addr + write_byte_count;
-
-//read only memory for character bitmaps
-charLib CHAR_LIB (
-    .clka(clk),
-    .addra(char_lib_addr),
-    .douta(pbuf_write_data)
-);
-
-//pixel buffer
-pixel_buffer PIXEL_BUFFER (
-    .clka  (clk),
-    .wea   (pbuf_write_en),
-    .addra (pbuf_write_addr),
-    .dina  (pbuf_write_data),
-    .clkb  (clk),
-    .addrb (pbuf_read_addr),
-    .doutb (pbuf_read_data)
-);
-
 //initialization sequence op code look up
-init_sequence_rom INIT_SEQ (
-    .clka(clk),
-    .addra(startup_count),
-    .douta(init_operation)
-);
-
-//handshake flags, ready means associated start will be accepted
-assign disp_on_ready     = (state == Idle       && disp_on_start     == 1'b0) ? 1'b1 : 1'b0;
-assign update_ready      = (state == ActiveWait && update_start      == 1'b0) ? 1'b1 : 1'b0;
-assign write_ready       = (state == ActiveWait && write_start       == 1'b0) ? 1'b1 : 1'b0;
-assign disp_off_ready    = (state == ActiveWait && disp_off_start    == 1'b0) ? 1'b1 : 1'b0;
-assign toggle_disp_ready = (state == ActiveWait && toggle_disp_start == 1'b0) ? 1'b1 : 1'b0;
+always@(posedge clk) begin
+    init_operation <= init_sequence_rom[startup_count];
+end
 
 //state machine
 always@(posedge clk)
 	case (state)
 	Idle: begin
         if (disp_on_start) begin
-//            state    <= StartupPMODENOn;
             startup_count <= 'b0;
             state <= StartupFetch;
+        end else if (disp_off_start) begin
+            state <= BringdownDispOff;
+        end else begin
+            state <= Idle;
         end
-        disp_is_full <= 1'b0;
+        
+        disp_on_ready   <= 1'b0;
+        disp_off_ready  <= 1'b0;
     end
     /*
     INITIALIZATION SEQUENCE: (contained in init_sequence.dat)
-    1   Turn DC logic low                               delay 1ms
-    2   Turn RES logic high                             delay 1ms
-    3   Turn VCCEN logic low                            delay 1ms
-    4   Turn PMODEN logic high                          delay 20ms
-    5-6 Turn RES logic low                              delay 1ms
-    7   Send unlock command1                            (hFD)
-    7   Send unlock command2                            (h12)
-    8   Send display off command                        (hAE)
-    9   Send remap command1                             (hA0)
-    9   Send remap command2                             (h72)
-    10  Send set start line command1                    (hA1)
-    10  Send set start line command2                    (h00)
-    11  Send set offset command1                        (hA2)
-    11  Send set offset command2                        (h00)
-    12  Send no inversion command                       (hA4)
-    13  Send set mux ratio command1                     (hA8)
-    13  Send set mux ratio command2                     (h3F)
-    14  Send use external VCC command1                  (hAD)
-    14  Send use external VCC command2                  (h8E)
-    15  Send disable power saving command1              (hB0)
-    15  Send disable power saving command2              (h0B)
-    16  Send set charge rate phase length command1      (hB1)
-    16  Send set charge rate phase length command2      (h31)
-    17  Send set oscillator frequency command1          (hB3)
-    17  Send set oscillator frequency command2          (hF0)
-    18  Send set pre-charge speed of Red command1       (h8A)
-    18  Send set pre-charge speed of Red command2       (h64)
-    19  Send set pre-charge speed of Green command1     (h8B)
-    19  Send set pre-charge speed of Green command2     (h78)
-    20  Send set pre-charge speed of Blue command1      (h8C)
-    20  Send set pre-charge speed of Blue command2      (h64)
-    21  Send set pre-charge voltage command1            (hBB)
-    21  Send set pre-charge voltage command2            (h3A)
-    22  Send set voltage level for logic high command1  (hBE)
-    22  Send set voltage level for logic high command2  (h3E)
-    23  Send set master current attenuation command1    (h87)
-    23  Send set master current attenuation command2    (h06)
-    24  Send set contrast for Red command1              (h81)
-    24  Send set contrast for Red command2              (h91)
-    25  Send set contrast for Green command1            (h82)
-    25  Send set contrast for Green command2            (h50)
-    26  Send set contrast for Blue command1             (h83)
-    26  Send set contrast for Blue command2             (h7D)
-    27  Send disable scrolling                          (h2E)
-    28  Send clear screen command1                      (h25)
-    28  Send clear screen command2                      (h00)
-    28  Send clear screen command3                      (h00)
-    28  Send clear screen command4                      (h5F)
-    28  Send clear screen command5                      (h3F)
-    29  Turn VCCEN logic high                           delay 25ms
-    30  Send turn on display command                    (hAF)
-    31  Wait                                            delay 100ms
-    32  Finished
-
-
-
-    Turn PMODEN on (active low), delay 1ms
-    Send DisplayOff command (hAE)
-    Turn RES on (active low), delay 1ms
-    Turn RES off (active low), delay 1ms
-    Send ChargePump1 command (h8D)
-    Send ChargePump2 command (h14)
-    Send PreCharge1 command (hD9)
-    Send PreCharge2 command (hF1)
-    Turn VCCEN on (active low), delay 100ms
-    Send DispContrast1 command (h81)
-    Send DispContrast2 command (h0F)
-    Send SetSegRemap command (hA0)
-    Send SetScanDirection command (hC0)
-    Send Set Lower Column Address command (hDA)
-    Send Lower Column Address (h00)
-    Send Display On command (hAF)
+    1   Turn DC logic low                               delay 1ms       1   0001
+    2   Turn RES logic high                             delay 1ms       2   3001
+    3   Turn VCCEN logic low                            delay 1ms       3   0201
+    4   Turn PMODEN logic high                          delay 20ms      4   0C14
+    5   Turn RES logic low                              delay 1ms       5   2001
+    6   Turn RES logic high                             delay 1ms       6   3001
+    7   Send unlock command1                            (hFD)           7   40FD
+    7   Send unlock command2                            (h12)           8   4012
+    8   Send display off command                        (hAE)           9   40AE
+    9   Send remap command1                             (hA0)           10  40A0
+    9   Send remap command2                             (h72)           11  4072
+    10  Send set start line command1                    (hA1)           12  40A1
+    10  Send set start line command2                    (h00)           13  4000
+    11  Send set offset command1                        (hA2)           14  40A2
+    11  Send set offset command2                        (h00)           15  4000
+    12  Send no inversion command                       (hA4)           16  40A4
+    13  Send set mux ratio command1                     (hA8)           17  40A8
+    13  Send set mux ratio command2                     (h3F)           18  403F
+    14  Send use external VCC command1                  (hAD)           19  40AD
+    14  Send use external VCC command2                  (h8E)           20  408E
+    15  Send disable power saving command1              (hB0)           21  40B0
+    15  Send disable power saving command2              (h0B)           22  400B
+    16  Send set charge rate phase length command1      (hB1)           23  40B1
+    16  Send set charge rate phase length command2      (h31)           24  4031
+    17  Send set oscillator frequency command1          (hB3)           25  40B3
+    17  Send set oscillator frequency command2          (hF0)           26  40F0
+    18  Send set pre-charge speed of Red command1       (h8A)           27  408A
+    18  Send set pre-charge speed of Red command2       (h64)           28  4064
+    19  Send set pre-charge speed of Green command1     (h8B)           29  408B
+    19  Send set pre-charge speed of Green command2     (h78)           30  4078
+    20  Send set pre-charge speed of Blue command1      (h8C)           31  408C
+    20  Send set pre-charge speed of Blue command2      (h64)           32  4064
+    21  Send set pre-charge voltage command1            (hBB)           33  40BB
+    21  Send set pre-charge voltage command2            (h3A)           34  403A
+    22  Send set voltage level for logic high command1  (hBE)           35  40BE
+    22  Send set voltage level for logic high command2  (h3E)           36  403E
+    23  Send set master current attenuation command1    (h87)           37  4087
+    23  Send set master current attenuation command2    (h06)           38  4006
+    24  Send set contrast for Red command1              (h81)           39  4081
+    24  Send set contrast for Red command2              (h91)           40  4091
+    25  Send set contrast for Green command1            (h82)           41  4082
+    25  Send set contrast for Green command2            (h50)           42  4050
+    26  Send set contrast for Blue command1             (h83)           43  4083
+    26  Send set contrast for Blue command2             (h7D)           44  407D
+    27  Send disable scrolling                          (h2E)           45  402E
+    28  Send clear screen command1                      (h25)           46  4025
+    28  Send clear screen command2                      (h00)           47  4000
+    28  Send clear screen command3                      (h00)           48  4000
+    28  Send clear screen command4                      (h5F)           49  405F
+    28  Send clear screen command5                      (h3F)           50  403F
+    29  Turn VCCEN logic high                           delay 25ms      51  0319
+    30  Send turn on display command                    (hAF)           52  40AF
+    31  Wait                                            delay 100ms     53  0064
+    32  Finished                                                            DONE
+    33  Send enable fill command1                       (h26)           54  4026
+    33  Send enable fill command2                       (h01)           55  4001
     */
+
     Startup: begin
         oled_dc   <= 1'b0;
         oled_pmoden  <= (iop_PMODEN_set == 1'b1) ? iop_PMODEN_val : oled_pmoden;
@@ -299,16 +214,10 @@ always@(posedge clk)
             temp_spi_data    <= iop_data;
             state            <= UtilitySpiWait;
         end
-        if (startup_count == 4'd15) begin
-            //        after_state    <= ActiveWait;
-            after_state          <= ActiveUpdatePage;
-            after_update_state   <= ActiveWait;
-            after_char_state     <= ActiveUpdateScreen;
-            after_page_state     <= ActiveUpdateScreen;
-            update_page_count    <= 'b0;
-            temp_page            <= 'b0;
-            temp_index           <= 'b0;
-            clear_screen         <= 1'b1;
+
+        if (startup_count == 'd65) begin
+            after_state   <= Idle;
+            disp_on_ready <= 1'b1;
         end else begin
             after_state   <= StartupFetch;
             startup_count <= startup_count + 1'b1;
@@ -321,144 +230,37 @@ always@(posedge clk)
         iop_res_set      <= init_operation[13];
         iop_res_val      <= init_operation[12];
         
-        iop_PMODEN_set      <= init_operation[11];
-        iop_PMODEN_val      <= init_operation[10];
-        iop_VCCEN_set     <= init_operation[9];
-        iop_VCCEN_val     <= init_operation[8];
+        iop_PMODEN_set   <= init_operation[11];
+        iop_PMODEN_val   <= init_operation[10];
+        iop_VCCEN_set    <= init_operation[9];
+        iop_VCCEN_val    <= init_operation[8];
 
         iop_data         <= init_operation[7:0];
-    end
-	
-	ActiveWait: begin
-	    if (disp_off_start)
-	        state                <= BringdownDispOff;
-	    else if (update_start) begin
-	        after_update_state   <= ActiveUpdateWait;
-	        after_char_state     <= ActiveUpdateScreen;
-	        after_page_state     <= ActiveUpdateScreen;
-	        state                <= ActiveUpdatePage;
-	        update_page_count    <= 'b0;
-	        temp_page            <= 'b0;
-	        temp_index           <= 'b0;
-	        clear_screen         <= update_clear;
-        end else if (write_start) begin
-            state <= ActiveWriteTran;
-            write_byte_count <= 'b0;
-            temp_write_ascii     <= write_ascii_data;
-            temp_write_base_addr <= write_base_addr;
-        end else if (toggle_disp_start) begin
-            oled_dc              <= 1'b0;
-            disp_is_full         <= ~disp_is_full;
-            temp_spi_data        <= 8'hA4 | {7'b0, ~disp_is_full};
-            temp_spi_start       <= 1'b1;
-            after_state          <= ActiveToggleDispWait;
-            state                <= UtilitySpiWait;
-        end
-    end
-    
-    ActiveWrite: begin
-        if (write_byte_count == 3'd7)
-            state <= ActiveWriteWait;
-        else
-            state <= ActiveWriteTran;
-        write_byte_count <= write_byte_count + 1;
-    end
-    
-    ActiveWriteTran: begin
-        //give char lib a cycle for read to complete
-        state <= ActiveWrite;
-    end
-    
-    ActiveWriteWait: begin
-        if (write_start == 0)
-            state <= ActiveWait;
-        else
-            state <= ActiveWriteWait;
-        write_byte_count <= 'b0;
-    end
-    
-    ActiveUpdatePage: begin
-        case (update_page_count)
-        0: temp_spi_data <= 8'h22;
-        1: temp_spi_data <= {6'b0, temp_page};
-        2: temp_spi_data <= 8'h00;
-        3: temp_spi_data <= 8'h10;
-        endcase
-        if (update_page_count < 4) begin
-            oled_dc        <= 1'b0;
-            after_state    <= ActiveUpdatePage;
-            temp_spi_start <= 1'b1;
-            state          <= UtilitySpiWait;
-        end else
-            state <= after_page_state;
-        update_page_count <= update_page_count + 1;
-    end
-    
-    ActiveSendByte: begin
-        oled_dc <= 1'b1;
-        if (clear_screen == 1'b1) begin
-            temp_spi_data  <= 'b0;
-            after_state    <= after_char_state;
-            state          <= UtilitySpiWait;
-            temp_spi_start <= 1'b1;
-        end else begin
-            temp_spi_data  <= pbuf_read_data;
-            after_state    <= after_char_state;
-            state          <= UtilitySpiWait;
-            temp_spi_start <= 1'b1;
-        end
-    end
-    
-    ActiveUpdateScreen: begin
-        if (temp_index == 7'd127) begin
-            temp_index        <= 'b0;
-            temp_page         <= temp_page + 1;
-            update_page_count <= 'b0;
-            after_char_state  <= ActiveUpdatePage;
-            if (temp_page == 2'd3)
-                after_page_state <= after_update_state;
-            else
-                after_page_state <= ActiveUpdateScreen;
-        end else begin
-            temp_index <= temp_index + 1;
-            after_char_state <= ActiveUpdateScreen;
-        end
-        state <= ActiveSendByte;
-    end
-    
-    ActiveUpdateWait: begin
-        if (update_start == 1'b0)
-            state <= ActiveWait;
-    end
-    
-    ActiveToggleDispWait: begin
-        if (toggle_disp_start == 1'b0)
-            state <= ActiveWait;
     end
     
     //Bringdown States:
     //1. turn off display
     //2. power off VCCEN
-    //3. delay 100ms
+    //3. delay 400ms
     //4. power off PMODEN
 	BringdownDispOff: begin
-        oled_dc <= 1'b0;
-		temp_spi_start <= 1'b1;
-		temp_spi_data  <= 8'hAE;
-		after_state    <= BringdownVCCENOff;
-        state          <= UtilitySpiWait;
+        oled_dc         <= 1'b0;
+		temp_spi_start  <= 1'b1;
+		temp_spi_data   <= 8'hAE;
+		after_state     <= BringdownVCCENOff;
+        state           <= UtilitySpiWait;
     end
     BringdownVCCENOff: begin
-        oled_vccen        <= 1'b0;
+        oled_vccen       <= 1'b0;
         temp_delay_start <= 1'b1;
-        temp_delay_ms    <= 12'd100;
+        temp_delay_ms    <= 12'd400;
         after_state      <= BringdownPMODENOff;
         state            <= UtilityDelayWait;
     end
     BringdownPMODENOff: begin
-        oled_pmoden <= 1'b0;
-        if (disp_on_start == 1'b0)
-            state <= Idle;
+        oled_pmoden     <= 1'b0;
+        state           <= Idle;
+        disp_off_ready  <= 1'b1;
     end
     
 	//Utility States, control states for SPI and DELAY handshakes.
