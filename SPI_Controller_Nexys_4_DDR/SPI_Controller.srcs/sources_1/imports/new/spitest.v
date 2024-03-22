@@ -33,19 +33,19 @@ module spitest(
     
     wire chip_select;
     wire [11:0] volume_out;
-    wire [11:0] shifted_PCM_out;
+    wire [11:0] PCM;
     spi control(
         .ss(chip_select),
         .MISO(MISO),
         .volume_out(volume_out),
-        .shifted_PCM_out(shifted_PCM_out),
+        .PCM(PCM),
         .clk(clk),
         .rst(rst),
         .sck(sck)
     );
 
     PWM wave (
-        .A(shifted_PCM_out),
+        .A(PCM),
         .clk(clk),
         .rst(rst),
         .ss(chip_select),

@@ -1,7 +1,7 @@
 Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------
 | Tool Version              : Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
-| Date                      : Mon Feb  5 23:29:36 2024
+| Date                      : Mon Feb 26 22:19:02 2024
 | Host                      : Ron5890 running 64-bit major release  (build 9200)
 | Command                   : report_io -file spitest_io_placed.rpt
 | Design                    : spitest

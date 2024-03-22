@@ -65,13 +65,15 @@ start_step init_design
 set ACTIVE_STEP init_design
 set rc [catch {
   create_msg_db init_design.pb
-  set_param tcl.collectionResultDisplayLimit 0
-  set_param xicom.use_bs_reader 1
-  reset_param project.defaultXPMLibraries 
-  open_checkpoint D:/ECE532_Project/SPI_Controller_Nexys_4_DDR/SPI_Controller.runs/impl_1/spitest.dcp
+  create_project -in_memory -part xc7a100tcsg324-1
+  set_property design_mode GateLvl [current_fileset]
+  set_param project.singleFileAddWarning.threshold 0
   set_property webtalk.parent_dir D:/ECE532_Project/SPI_Controller_Nexys_4_DDR/SPI_Controller.cache/wt [current_project]
   set_property parent.project_path D:/ECE532_Project/SPI_Controller_Nexys_4_DDR/SPI_Controller.xpr [current_project]
   set_property ip_cache_permissions disable [current_project]
+  add_files -quiet D:/ECE532_Project/SPI_Controller_Nexys_4_DDR/SPI_Controller.runs/synth_1/spitest.dcp
+  read_xdc D:/ECE532_Project/SPI_Controller_Nexys_4_DDR/SPI_Controller.srcs/constrs_1/new/Nexys_4_DDR_constraint.xdc
+  link_design -top spitest -part xc7a100tcsg324-1
   close_msg_db -file init_design.pb
 } RESULT]
 if {$rc} {

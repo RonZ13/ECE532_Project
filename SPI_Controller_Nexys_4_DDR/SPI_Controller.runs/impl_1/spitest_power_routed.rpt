@@ -1,7 +1,7 @@
 Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
-| Date             : Mon Feb  5 23:30:27 2024
+| Date             : Mon Feb 26 22:19:54 2024
 | Host             : Ron5890 running 64-bit major release  (build 9200)
 | Command          : report_power -file spitest_power_routed.rpt -pb spitest_power_summary_routed.pb -rpx spitest_power_routed.rpx
 | Design           : spitest
@@ -53,16 +53,16 @@ Table of Contents
 | On-Chip                  | Power (W) | Used     | Available | Utilization (%) |
 +--------------------------+-----------+----------+-----------+-----------------+
 | Clocks                   |    <0.001 |        3 |       --- |             --- |
-| Slice Logic              |    <0.001 |     4488 |       --- |             --- |
-|   LUT as Logic           |    <0.001 |     1423 |     63400 |            2.24 |
-|   Register               |    <0.001 |     2184 |    126800 |            1.72 |
-|   CARRY4                 |    <0.001 |       59 |     15850 |            0.37 |
+| Slice Logic              |    <0.001 |     4482 |       --- |             --- |
+|   LUT as Logic           |    <0.001 |     1421 |     63400 |            2.24 |
+|   Register               |    <0.001 |     2183 |    126800 |            1.72 |
+|   CARRY4                 |    <0.001 |       56 |     15850 |            0.35 |
 |   LUT as Shift Register  |    <0.001 |      104 |     19000 |            0.55 |
 |   BUFG                   |    <0.001 |        2 |        32 |            6.25 |
 |   LUT as Distributed RAM |    <0.001 |       24 |     19000 |            0.13 |
 |   F7/F8 Muxes            |    <0.001 |       39 |     63400 |            0.06 |
-|   Others                 |     0.000 |      399 |       --- |             --- |
-| Signals                  |     0.001 |     3450 |       --- |             --- |
+|   Others                 |     0.000 |      398 |       --- |             --- |
+| Signals                  |     0.001 |     3443 |       --- |             --- |
 | Block RAM                |    <0.001 |       60 |       135 |           44.44 |
 | I/O                      |    <0.001 |       18 |       210 |            8.57 |
 | Static Power             |     0.100 |          |           |                 |

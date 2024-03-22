@@ -24,7 +24,7 @@ module spi(
     output ss,
     input MISO,
     output [11:0] volume_out,
-    output [11:0] shifted_PCM_out,
+    output [11:0] PCM,
     input clk,
     input rst,
     output sck
@@ -48,7 +48,7 @@ module spi(
         .clk(clk_slow),
         .data_in(data_net),
         .volume_out(volume_out),
-        .shifted_PCM_out(shifted_PCM_out),
+        .PCM(PCM),
         .count(count_net)
     );
           

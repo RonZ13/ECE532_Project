@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="impl_1" LaunchPart="xc7a100tcsg324-1" LaunchTime="1707193576">
-  <File Type="OPT-HWDEF" Name="spitest.hwdef"/>
-  <File Type="ROUTE-BUS-SKEW" Name="spitest_bus_skew_routed.rpt"/>
-  <File Type="PA-DCP" Name="spitest.dcp"/>
+<GenRun Id="impl_1" LaunchPart="xc7a100tcsg324-1" LaunchTime="1709003707">
   <File Type="BITSTR-BMM" Name="spitest_bd.bmm"/>
   <File Type="OPT-METHODOLOGY-DRC" Name="spitest_methodology_drc_opted.rpt"/>
   <File Type="INIT-TIMING" Name="spitest_timing_summary_init.rpt"/>
@@ -13,6 +10,7 @@
   <File Type="ROUTE-PWR-SUM" Name="spitest_power_summary_routed.pb"/>
   <File Type="REPORTS-TCL" Name="spitest_reports.tcl"/>
   <File Type="OPT-DRC" Name="spitest_drc_opted.rpt"/>
+  <File Type="OPT-HWDEF" Name="spitest.hwdef"/>
   <File Type="PWROPT-DCP" Name="spitest_pwropt.dcp"/>
   <File Type="PWROPT-DRC" Name="spitest_drc_pwropted.rpt"/>
   <File Type="PWROPT-TIMING" Name="spitest_timing_summary_pwropted.rpt"/>
@@ -24,6 +22,7 @@
   <File Type="PLACE-CTRL" Name="spitest_control_sets_placed.rpt"/>
   <File Type="PLACE-SIMILARITY" Name="spitest_incremental_reuse_placed.rpt"/>
   <File Type="PLACE-PRE-SIMILARITY" Name="spitest_incremental_reuse_pre_placed.rpt"/>
+  <File Type="BG-BGN" Name="spitest.bgn"/>
   <File Type="PLACE-TIMING" Name="spitest_timing_summary_placed.rpt"/>
   <File Type="POSTPLACE-PWROPT-DCP" Name="spitest_postplace_pwropt.dcp"/>
   <File Type="BG-BIN" Name="spitest.bin"/>
@@ -53,6 +52,7 @@
   <File Type="ROUTE-TIMING-RPX" Name="spitest_timing_summary_routed.rpx"/>
   <File Type="ROUTE-SIMILARITY" Name="spitest_incremental_reuse_routed.rpt"/>
   <File Type="ROUTE-CLK" Name="spitest_clock_utilization_routed.rpt"/>
+  <File Type="ROUTE-BUS-SKEW" Name="spitest_bus_skew_routed.rpt"/>
   <File Type="ROUTE-BUS-SKEW-PB" Name="spitest_bus_skew_routed.pb"/>
   <File Type="ROUTE-BUS-SKEW-RPX" Name="spitest_bus_skew_routed.rpx"/>
   <File Type="POSTROUTE-PHYSOPT-DCP" Name="spitest_postroute_physopt.dcp"/>
@@ -66,7 +66,6 @@
   <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-RPX" Name="spitest_bus_skew_postroute_physopted.rpx"/>
   <File Type="BITSTR-RBT" Name="spitest.rbt"/>
   <File Type="BITSTR-NKY" Name="spitest.nky"/>
-  <File Type="BG-BGN" Name="spitest.bgn"/>
   <File Type="BG-DRC" Name="spitest.drc"/>
   <File Type="RDI-RDI" Name="spitest.vdi"/>
   <File Type="WBT-USG" Name="usage_statistics_webtalk.html"/>
