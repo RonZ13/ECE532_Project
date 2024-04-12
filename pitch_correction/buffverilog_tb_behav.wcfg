@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="buffverilog_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="buffverilog_tb" />
+            <top_module name="glbl" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0fs"></ZoomStartTime>
+      <ZoomEndTime time="47334905661fs"></ZoomEndTime>
+      <Cursor1Time time="120000000000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="299"></NameColumnWidth>
+      <ValueColumnWidth column_width="202"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="85" />
+   <wvobject fp_name="/buffverilog_tb/clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/buffverilog_tb/vld" type="logic">
+      <obj_property name="ElementShortName">vld</obj_property>
+      <obj_property name="ObjectShortName">vld</obj_property>
+   </wvobject>
+   <wvobject fp_name="/buffverilog_tb/reset" type="logic">
+      <obj_property name="ElementShortName">reset</obj_property>
+      <obj_property name="ObjectShortName">reset</obj_property>
+   </wvobject>
+   <wvobject fp_name="/buffverilog_tb/audio_in" type="array">
+      <obj_property name="ElementShortName">audio_in[11:0]</obj_property>
+      <obj_property name="ObjectShortName">audio_in[11:0]</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider1335">
+      <obj_property name="label">FFT_top</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="/buffverilog_tb/DUT/fft_chain_i/xfft_0/s_axis_config_tdata" type="array">
+      <obj_property name="ElementShortName">s_axis_config_tdata[15:0]</obj_property>
+      <obj_property name="ObjectShortName">s_axis_config_tdata[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/buffverilog_tb/DUT/fft_chain_i/xfft_0/s_axis_config_tvalid" type="logic">
+      <obj_property name="ElementShortName">s_axis_config_tvalid</obj_property>
+      <obj_property name="ObjectShortName">s_axis_config_tvalid</obj_property>
+   </wvobject>
+   <wvobject fp_name="/buffverilog_tb/DUT/fft_chain_i/xfft_0/s_axis_config_tready" type="logic">
+      <obj_property name="ElementShortName">s_axis_config_tready</obj_property>
+      <obj_property name="ObjectShortName">s_axis_config_tready</obj_property>
+   </wvobject>
+   <wvobject fp_name="/buffverilog_tb/DUT/fft_chain_i/xfft_0/s_axis_data_tdata" type="array">
+      <obj_property name="ElementShortName">s_axis_data_tdata[31:0]</obj_property>
+      <obj_property name="ObjectShortName">s_axis_data_tdata[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/buffverilog_tb/DUT/fft_chain_i/xfft_0/s_axis_data_tvalid" type="logic">
+      <obj_property name="ElementShortName">s_axis_data_tvalid</obj_property>
+      <obj_property name="ObjectShortName">s_axis_data_tvalid</obj_property>
+   </wvobject>
+   <wvobject fp_name="/buffverilog_tb/DUT/fft_chain_i/xfft_0/s_axis_data_tready" type="logic">
+      <obj_property name="ElementShortName">s_axis_data_tready</obj_property>
+      <obj_property name="ObjectShortName">s_axis_data_tready</obj_property>
+   </wvobject>
+   <wvobject fp_name="/buffverilog_tb/DUT/fft_chain_i/xfft_0/s_axis_data_tlast" type="logic">
+      <obj_property name="ElementShortName">s_axis_data_tlast</obj_property>
+      <obj_property name="ObjectShortName">s_axis_data_tlast</obj_property>
+   </wvobject>
+   <wvobject fp_name="/buffverilog_tb/DUT/fft_chain_i/xfft_0/m_axis_data_tdata" type="array">
+      <obj_property name="ElementShortName">m_axis_data_tdata[31:0]</obj_property>
+      <obj_property name="ObjectShortName">m_axis_data_tdata[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/buffverilog_tb/DUT/fft_chain_i/xfft_0/m_axis_data_tvalid" type="logic">
+      <obj_property name="ElementShortName">m_axis_data_tvalid</obj_property>
+      <obj_property name="ObjectShortName">m_axis_data_tvalid</obj_property>
+   </wvobject>
+   <wvobject fp_name="/buffverilog_tb/DUT/fft_chain_i/xfft_0/m_axis_data_tready" type="logic">
+      <obj_property name="ElementShortName">m_axis_data_tready</obj_property>
+      <obj_property name="ObjectShortName">m_axis_data_tready</obj_property>
+   </wvobject>
+   <wvobject fp_name="/buffverilog_tb/DUT/fft_chain_i/xfft_0/m_axis_data_tlast" type="logic">
+      <obj_property name="ElementShortName">m_axis_data_tlast</obj_property>
+      <obj_property name="ObjectShortName">m_axis_data_tlast</obj_property>
+   </wvobject>
+   <wvobject fp_name="/buffverilog_tb/DUT/fft_chain_i/xfft_0/event_frame_started" type="logic">
+      <obj_property name="ElementShortName">event_frame_started</obj_property>
+      <obj_property name="ObjectShortName">event_frame_started</obj_property>
+   </wvobject>
+   <wvobject fp_name="/buffverilog_tb/DUT/fft_chain_i/xfft_0/event_tlast_unexpected" type="logic">
+      <obj_property name="ElementShortName">event_tlast_unexpected</obj_property>
+      <obj_property name="ObjectShortName">event_tlast_unexpected</obj_property>
+   </wvobject>
+   <wvobject fp_name="/buffverilog_tb/DUT/fft_chain_i/xfft_0/event_tlast_missing" type="logic">
+      <obj_property name="ElementShortName">event_tlast_missing</obj_property>
+      <obj_property name="ObjectShortName">event_tlast_missing</obj_property>
+   </wvobject>
+   <wvobject fp_name="/buffverilog_tb/DUT/fft_chain_i/xfft_0/event_status_channel_halt" type="logic">
+      <obj_property name="ElementShortName">event_status_channel_halt</obj_property>
+      <obj_property name="ObjectShortName">event_status_channel_halt</obj_property>
+   </wvobject>
+   <wvobject fp_name="/buffverilog_tb/DUT/fft_chain_i/xfft_0/event_data_in_channel_halt" type="logic">
+      <obj_property name="ElementShortName">event_data_in_channel_halt</obj_property>
+      <obj_property name="ObjectShortName">event_data_in_channel_halt</obj_property>
+   </wvobject>
+   <wvobject fp_name="/buffverilog_tb/DUT/fft_chain_i/xfft_0/event_data_out_channel_halt" type="logic">
+      <obj_property name="ElementShortName">event_data_out_channel_halt</obj_property>
+      <obj_property name="ObjectShortName">event_data_out_channel_halt</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider38">
+      <obj_property name="label">FFT bottom</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="/buffverilog_tb/DUT/fft_chain_i/xfft_2/s_axis_config_tdata" type="array">
+      <obj_property name="ElementShortName">s_axis_config_tdata[15:0]</obj_property>
+      <obj_property name="ObjectShortName">s_axis_config_tdata[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/buffverilog_tb/DUT/fft_chain_i/xfft_2/s_axis_config_tvalid" type="logic">
+      <obj_property name="ElementShortName">s_axis_config_tvalid</obj_property>
+      <obj_property name="ObjectShortName">s_axis_config_tvalid</obj_property>
+   </wvobject>
+   <wvobject fp_name="/buffverilog_tb/DUT/fft_chain_i/xfft_2/s_axis_config_tready" type="logic">
+      <obj_property name="ElementShortName">s_axis_config_tready</obj_property>
+      <obj_property name="ObjectShortName">s_axis_config_tready</obj_property>
+   </wvobject>
+   <wvobject fp_name="/buffverilog_tb/DUT/fft_chain_i/xfft_2/s_axis_data_tdata" type="array">
+      <obj_property name="ElementShortName">s_axis_data_tdata[31:0]</obj_property>
+      <obj_property name="ObjectShortName">s_axis_data_tdata[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/buffverilog_tb/DUT/fft_chain_i/xfft_2/s_axis_data_tvalid" type="logic">
+      <obj_property name="ElementShortName">s_axis_data_tvalid</obj_property>
+      <obj_property name="ObjectShortName">s_axis_data_tvalid</obj_property>
+   </wvobject>
+   <wvobject fp_name="/buffverilog_tb/DUT/fft_chain_i/xfft_2/s_axis_data_tready" type="logic">
+      <obj_property name="ElementShortName">s_axis_data_tready</obj_property>
+      <obj_property name="ObjectShortName">s_axis_data_tready</obj_property>
+   </wvobject>
+   <wvobject fp_name="/buffverilog_tb/DUT/fft_chain_i/xfft_2/s_axis_data_tlast" type="logic">
+      <obj_property name="ElementShortName">s_axis_data_tlast</obj_property>
+      <obj_property name="ObjectShortName">s_axis_data_tlast</obj_property>
+   </wvobject>
+   <wvobject fp_name="/buffverilog_tb/DUT/fft_chain_i/xfft_2/m_axis_data_tdata" type="array">
+      <obj_property name="ElementShortName">m_axis_data_tdata[31:0]</obj_property>
+      <obj_property name="ObjectShortName">m_axis_data_tdata[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/buffverilog_tb/DUT/fft_chain_i/xfft_2/m_axis_data_tvalid" type="logic">
+      <obj_property name="ElementShortName">m_axis_data_tvalid</obj_property>
+      <obj_property name="ObjectShortName">m_axis_data_tvalid</obj_property>
+   </wvobject>
+   <wvobject fp_name="/buffverilog_tb/DUT/fft_chain_i/xfft_2/m_axis_data_tready" type="logic">
+      <obj_property name="ElementShortName">m_axis_data_tready</obj_property>
+      <obj_property name="ObjectShortName">m_axis_data_tready</obj_property>
+   </wvobject>
+   <wvobject fp_name="/buffverilog_tb/DUT/fft_chain_i/xfft_2/m_axis_data_tlast" type="logic">
+      <obj_property name="ElementShortName">m_axis_data_tlast</obj_property>
+      <obj_property name="ObjectShortName">m_axis_data_tlast</obj_property>
+   </wvobject>
+   <wvobject fp_name="/buffverilog_tb/DUT/fft_chain_i/xfft_2/event_frame_started" type="logic">
+      <obj_property name="ElementShortName">event_frame_started</obj_property>
+      <obj_property name="ObjectShortName">event_frame_started</obj_property>
+   </wvobject>
+   <wvobject fp_name="/buffverilog_tb/DUT/fft_chain_i/xfft_2/event_tlast_unexpected" type="logic">
+      <obj_property name="ElementShortName">event_tlast_unexpected</obj_property>
+      <obj_property name="ObjectShortName">event_tlast_unexpected</obj_property>
+   </wvobject>
+   <wvobject fp_name="/buffverilog_tb/DUT/fft_chain_i/xfft_2/event_tlast_missing" type="logic">
+      <obj_property name="ElementShortName">event_tlast_missing</obj_property>
+      <obj_property name="ObjectShortName">event_tlast_missing</obj_property>
+   </wvobject>
+   <wvobject fp_name="/buffverilog_tb/DUT/fft_chain_i/xfft_2/event_status_channel_halt" type="logic">
+      <obj_property name="ElementShortName">event_status_channel_halt</obj_property>
+      <obj_property name="ObjectShortName">event_status_channel_halt</obj_property>
+   </wvobject>
+   <wvobject fp_name="/buffverilog_tb/DUT/fft_chain_i/xfft_2/event_data_in_channel_halt" type="logic">
+      <obj_property name="ElementShortName">event_data_in_channel_halt</obj_property>
+      <obj_property name="ObjectShortName">event_data_in_channel_halt</obj_property>
+   </wvobject>
+   <wvobject fp_name="/buffverilog_tb/DUT/fft_chain_i/xfft_2/event_data_out_channel_halt" type="logic">
+      <obj_property name="ElementShortName">event_data_out_channel_halt</obj_property>
+      <obj_property name="ObjectShortName">event_data_out_channel_halt</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider44">
+      <obj_property name="label">iFFT top</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="/buffverilog_tb/DUT/fft_chain_i/xfft_1/s_axis_data_tdata" type="array">
+      <obj_property name="ElementShortName">s_axis_data_tdata[31:0]</obj_property>
+      <obj_property name="ObjectShortName">s_axis_data_tdata[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/buffverilog_tb/DUT/fft_chain_i/xfft_1/s_axis_data_tvalid" type="logic">
+      <obj_property name="ElementShortName">s_axis_data_tvalid</obj_property>
+      <obj_property name="ObjectShortName">s_axis_data_tvalid</obj_property>
+   </wvobject>
+   <wvobject fp_name="/buffverilog_tb/DUT/fft_chain_i/xfft_1/m_axis_data_tdata" type="array">
+      <obj_property name="ElementShortName">m_axis_data_tdata[31:0]</obj_property>
+      <obj_property name="ObjectShortName">m_axis_data_tdata[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/buffverilog_tb/DUT/fft_chain_i/xfft_1/m_axis_data_tready" type="logic">
+      <obj_property name="ElementShortName">m_axis_data_tready</obj_property>
+      <obj_property name="ObjectShortName">m_axis_data_tready</obj_property>
+   </wvobject>
+   <wvobject fp_name="/buffverilog_tb/DUT/fft_chain_i/xfft_1/m_axis_data_tvalid" type="logic">
+      <obj_property name="ElementShortName">m_axis_data_tvalid</obj_property>
+      <obj_property name="ObjectShortName">m_axis_data_tvalid</obj_property>
+   </wvobject>
+   <wvobject fp_name="/buffverilog_tb/DUT/fft_chain_i/xfft_1/event_frame_started" type="logic">
+      <obj_property name="ElementShortName">event_frame_started</obj_property>
+      <obj_property name="ObjectShortName">event_frame_started</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider50">
+      <obj_property name="label">iFFT bottom</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="/buffverilog_tb/DUT/fft_chain_i/xfft_3/s_axis_data_tdata" type="array">
+      <obj_property name="ElementShortName">s_axis_data_tdata[31:0]</obj_property>
+      <obj_property name="ObjectShortName">s_axis_data_tdata[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/buffverilog_tb/DUT/fft_chain_i/xfft_3/s_axis_data_tvalid" type="logic">
+      <obj_property name="ElementShortName">s_axis_data_tvalid</obj_property>
+      <obj_property name="ObjectShortName">s_axis_data_tvalid</obj_property>
+   </wvobject>
+   <wvobject fp_name="/buffverilog_tb/DUT/fft_chain_i/xfft_3/m_axis_data_tdata" type="array">
+      <obj_property name="ElementShortName">m_axis_data_tdata[31:0]</obj_property>
+      <obj_property name="ObjectShortName">m_axis_data_tdata[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/buffverilog_tb/DUT/fft_chain_i/xfft_3/m_axis_data_tvalid" type="logic">
+      <obj_property name="ElementShortName">m_axis_data_tvalid</obj_property>
+      <obj_property name="ObjectShortName">m_axis_data_tvalid</obj_property>
+   </wvobject>
+   <wvobject fp_name="/buffverilog_tb/DUT/fft_chain_i/xfft_3/m_axis_data_tready" type="logic">
+      <obj_property name="ElementShortName">m_axis_data_tready</obj_property>
+      <obj_property name="ObjectShortName">m_axis_data_tready</obj_property>
+   </wvobject>
+   <wvobject fp_name="/buffverilog_tb/DUT/fft_chain_i/xfft_3/event_frame_started" type="logic">
+      <obj_property name="ElementShortName">event_frame_started</obj_property>
+      <obj_property name="ObjectShortName">event_frame_started</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider986">
+      <obj_property name="label">PWM</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="/buffverilog_tb/DUT/fft_chain_i/PWM_0/inst/clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/buffverilog_tb/DUT/fft_chain_i/PWM_0/inst/rst" type="logic">
+      <obj_property name="ElementShortName">rst</obj_property>
+      <obj_property name="ObjectShortName">rst</obj_property>
+   </wvobject>
+   <wvobject fp_name="/buffverilog_tb/DUT/fft_chain_i/PWM_0/inst/AUD_PWM" type="logic">
+      <obj_property name="ElementShortName">AUD_PWM</obj_property>
+      <obj_property name="ObjectShortName">AUD_PWM</obj_property>
+   </wvobject>
+   <wvobject fp_name="/buffverilog_tb/DUT/fft_chain_i/PWM_0/inst/AUD_SD" type="logic">
+      <obj_property name="ElementShortName">AUD_SD</obj_property>
+      <obj_property name="ObjectShortName">AUD_SD</obj_property>
+   </wvobject>
+   <wvobject fp_name="/buffverilog_tb/DUT/fft_chain_i/PWM_0/inst/count" type="array">
+      <obj_property name="ElementShortName">count[11:0]</obj_property>
+      <obj_property name="ObjectShortName">count[11:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/buffverilog_tb/DUT/fft_chain_i/PWM_0/inst/sample1" type="array">
+      <obj_property name="ElementShortName">sample1[11:0]</obj_property>
+      <obj_property name="ObjectShortName">sample1[11:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/buffverilog_tb/DUT/fft_chain_i/PWM_0/inst/sample2" type="array">
+      <obj_property name="ElementShortName">sample2[11:0]</obj_property>
+      <obj_property name="ObjectShortName">sample2[11:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/buffverilog_tb/DUT/fft_chain_i/PWM_0/inst/overlapped_sample" type="array">
+      <obj_property name="ElementShortName">overlapped_sample[11:0]</obj_property>
+      <obj_property name="ObjectShortName">overlapped_sample[11:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/buffverilog_tb/DUT/fft_chain_i/PWM_0/inst/sum" type="array">
+      <obj_property name="ElementShortName">sum[12:0]</obj_property>
+      <obj_property name="ObjectShortName">sum[12:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider20">
+      <obj_property name="label">Hanning</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="/buffverilog_tb/DUT/fft_chain_i/buff_fft_wrapper_0/inst/u_buff_fft/hann_i/rst" type="logic">
+      <obj_property name="ElementShortName">rst</obj_property>
+      <obj_property name="ObjectShortName">rst</obj_property>
+   </wvobject>
+   <wvobject fp_name="/buffverilog_tb/DUT/fft_chain_i/buff_fft_wrapper_0/inst/u_buff_fft/hann_i/clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/buffverilog_tb/DUT/fft_chain_i/buff_fft_wrapper_0/inst/u_buff_fft/hann_i/audio_in" type="array">
+      <obj_property name="ElementShortName">audio_in[11:0]</obj_property>
+      <obj_property name="ObjectShortName">audio_in[11:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/buffverilog_tb/DUT/fft_chain_i/buff_fft_wrapper_0/inst/u_buff_fft/hann_i/vld_in" type="logic">
+      <obj_property name="ElementShortName">vld_in</obj_property>
+      <obj_property name="ObjectShortName">vld_in</obj_property>
+   </wvobject>
+   <wvobject fp_name="/buffverilog_tb/DUT/fft_chain_i/buff_fft_wrapper_0/inst/u_buff_fft/hann_i/audio_out" type="array">
+      <obj_property name="ElementShortName">audio_out[11:0]</obj_property>
+      <obj_property name="ObjectShortName">audio_out[11:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/buffverilog_tb/DUT/fft_chain_i/buff_fft_wrapper_0/inst/u_buff_fft/hann_i/vld_out" type="logic">
+      <obj_property name="ElementShortName">vld_out</obj_property>
+      <obj_property name="ObjectShortName">vld_out</obj_property>
+   </wvobject>
+   <wvobject fp_name="/buffverilog_tb/DUT/fft_chain_i/buff_fft_wrapper_0/inst/u_buff_fft/hann_i/coeffs" type="array">
+      <obj_property name="ElementShortName">coeffs[127:0][15:0]</obj_property>
+      <obj_property name="ObjectShortName">coeffs[127:0][15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/buffverilog_tb/DUT/fft_chain_i/buff_fft_wrapper_0/inst/u_buff_fft/hann_i/index" type="array">
+      <obj_property name="ElementShortName">index[7:0]</obj_property>
+      <obj_property name="ObjectShortName">index[7:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/buffverilog_tb/DUT/fft_chain_i/buff_fft_wrapper_0/inst/u_buff_fft/hann_i/product_raw" type="array">
+      <obj_property name="ElementShortName">product_raw[27:0]</obj_property>
+      <obj_property name="ObjectShortName">product_raw[27:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/buffverilog_tb/DUT/fft_chain_i/buff_fft_wrapper_0/inst/u_buff_fft/hann2_i/vld_in" type="logic">
+      <obj_property name="ElementShortName">vld_in</obj_property>
+      <obj_property name="ObjectShortName">vld_in</obj_property>
+   </wvobject>
+   <wvobject fp_name="/buffverilog_tb/DUT/fft_chain_i/buff_fft_wrapper_0/inst/u_buff_fft/hann2_i/audio_out" type="array">
+      <obj_property name="ElementShortName">audio_out[11:0]</obj_property>
+      <obj_property name="ObjectShortName">audio_out[11:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/buffverilog_tb/DUT/fft_chain_i/buff_fft_wrapper_0/inst/u_buff_fft/hann2_i/vld_out" type="logic">
+      <obj_property name="ElementShortName">vld_out</obj_property>
+      <obj_property name="ObjectShortName">vld_out</obj_property>
+   </wvobject>
+   <wvobject fp_name="/buffverilog_tb/DUT/fft_chain_i/buff_fft_wrapper_0/inst/u_buff_fft/hann2_i/index" type="array">
+      <obj_property name="ElementShortName">index[7:0]</obj_property>
+      <obj_property name="ObjectShortName">index[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/buffverilog_tb/DUT/fft_chain_i/buff_fft_wrapper_0/inst/u_buff_fft/hann2_i/product_raw" type="array">
+      <obj_property name="ElementShortName">product_raw[27:0]</obj_property>
+      <obj_property name="ObjectShortName">product_raw[27:0]</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider29">
+      <obj_property name="label">preFFT Buffer</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="/buffverilog_tb/DUT/fft_chain_i/buff_fft_wrapper_0/inst/u_buff_fft/m_axis_data_tdata" type="array">
+      <obj_property name="ElementShortName">m_axis_data_tdata[31:0]</obj_property>
+      <obj_property name="ObjectShortName">m_axis_data_tdata[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/buffverilog_tb/DUT/fft_chain_i/buff_fft_wrapper_0/inst/u_buff_fft/m_axis_data_tvalid" type="logic">
+      <obj_property name="ElementShortName">m_axis_data_tvalid</obj_property>
+      <obj_property name="ObjectShortName">m_axis_data_tvalid</obj_property>
+   </wvobject>
+   <wvobject fp_name="/buffverilog_tb/DUT/fft_chain_i/buff_fft_wrapper_0/inst/u_buff_fft/m_axis_data_tdata_2" type="array">
+      <obj_property name="ElementShortName">m_axis_data_tdata_2[31:0]</obj_property>
+      <obj_property name="ObjectShortName">m_axis_data_tdata_2[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/buffverilog_tb/DUT/fft_chain_i/buff_fft_wrapper_0/inst/u_buff_fft/m_axis_data_tvalid_2" type="logic">
+      <obj_property name="ElementShortName">m_axis_data_tvalid_2</obj_property>
+      <obj_property name="ObjectShortName">m_axis_data_tvalid_2</obj_property>
+   </wvobject>
+   <wvobject fp_name="/buffverilog_tb/DUT/fft_chain_i/buff_fft_wrapper_0/inst/u_buff_fft/sample_counter" type="array">
+      <obj_property name="ElementShortName">sample_counter[7:0]</obj_property>
+      <obj_property name="ObjectShortName">sample_counter[7:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+</wave_config>

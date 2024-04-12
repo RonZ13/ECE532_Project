@@ -1,0 +1,63 @@
+{
+   "ExpandedHierarchyInLayout":"",
+   "guistr":"# # String gsaved with Nlview 6.8.11  2018-08-07 bk=1.4403 VDI=40 GEI=35 GUI=JA:9.0 non-TLS-threadsafe
+#  -string -flagsOSRD
+preplace port sck -pg 1 -y 780 -defaultsOSRD -left
+preplace port PWM -pg 1 -y 380 -defaultsOSRD
+preplace port MISO -pg 1 -y 620 -defaultsOSRD
+preplace port rst -pg 1 -y 680 -defaultsOSRD
+preplace port pitch_enable -pg 1 -y 540 -defaultsOSRD
+preplace port aud_in_sel -pg 1 -y 810 -defaultsOSRD
+preplace port AUD_SD -pg 1 -y 410 -defaultsOSRD
+preplace port clk -pg 1 -y 650 -defaultsOSRD
+preplace port aud_out_sel -pg 1 -y 320 -defaultsOSRD
+preplace port ss -pg 1 -y 750 -defaultsOSRD -left
+preplace portBus led -pg 1 -y 870 -defaultsOSRD
+preplace inst PWM_wrap_0 -pg 1 -lvl 6 -y 400 -defaultsOSRD
+preplace inst pitch_correction_0 -pg 1 -lvl 4 -y 730 -defaultsOSRD
+preplace inst pitch_correction_1 -pg 1 -lvl 4 -y 510 -defaultsOSRD
+preplace inst spi_0 -pg 1 -lvl 1 -y 640 -defaultsOSRD
+preplace inst xfft_0 -pg 1 -lvl 3 -y 760 -defaultsOSRD
+preplace inst xfft_1 -pg 1 -lvl 5 -y 160 -defaultsOSRD
+preplace inst xfft_2 -pg 1 -lvl 3 -y 520 -defaultsOSRD
+preplace inst xfft_3 -pg 1 -lvl 5 -y 500 -defaultsOSRD
+preplace inst buff_fft_wrapper_0 -pg 1 -lvl 2 -y 770 -defaultsOSRD
+preplace netloc buff_fft_wrapper_0_m_axis_data 1 2 1 N
+preplace netloc pitch_correction_0_m_axis_config 1 4 1 1550
+preplace netloc xfft_3_m_axis_data_tdata 1 5 1 1990
+preplace netloc spi_0_data_vld 1 1 1 330
+preplace netloc aud_out_sel_1 1 0 6 NJ 320 NJ 320 NJ 320 NJ 320 NJ 320 NJ
+preplace netloc xfft_1_m_axis_data_tdata 1 5 1 2060
+preplace netloc buff_fft_wrapper_0_m_axis_data_2 1 2 1 700
+preplace netloc buff_fft_wrapper_0_m_axis_config 1 2 1 730
+preplace netloc buff_fft_wrapper_0_audio_by1 1 2 4 690 340 NJ 340 NJ 340 2000J
+preplace netloc PWM_wrap_0_AUD_SD 1 6 1 2450J
+preplace netloc clk_0_1 1 0 6 10 520 360 540 740 880 1150 620 1560 330 1970
+preplace netloc xfft_2_M_AXIS_DATA 1 3 1 1150
+preplace netloc buff_fft_wrapper_0_audio_by2 1 2 4 700J 900 NJ 900 1550J 860 2040
+preplace netloc xfft_3_m_axis_data_tlast 1 5 1 N
+preplace netloc spi_0_sck 1 0 2 NJ 780 310
+preplace netloc buff_fft_wrapper_0_m_axis_config_2 1 2 1 710
+preplace netloc buff_fft_wrapper_0_audio_vld1 1 2 4 710 910 NJ 910 NJ 910 2060J
+preplace netloc spi_0_ss 1 0 2 NJ 750 320
+preplace netloc xfft_0_M_AXIS_DATA 1 3 1 N
+preplace netloc pitch_correction_1_m_axis_config 1 4 1 1570
+preplace netloc pitch_correction_1_m_axis_data 1 4 1 N
+preplace netloc pitch_enable_0_1 1 0 4 0J 400 NJ 400 NJ 400 1160J
+preplace netloc buff_fft_wrapper_0_audio_vld2 1 2 4 690J 920 NJ 920 1570J 870 2050
+preplace netloc xfft_1_m_axis_data_tlast 1 5 1 2020
+preplace netloc spi_0_volume_out 1 1 6 NJ 610 720J 890 NJ 890 NJ 890 2070J 870 NJ
+preplace netloc rst_0_1 1 0 6 20 530 340 640 NJ 640 1170 880 NJ 880 2030
+preplace netloc pitch_correction_0_m_axis_data 1 4 1 1540
+preplace netloc xfft_3_m_axis_data_tvalid 1 5 1 2010
+preplace netloc xfft_1_m_axis_data_tvalid 1 5 1 2010
+preplace netloc PWM_wrap_0_s_axis_data_tready1 1 5 2 NJ 120 2460
+preplace netloc spi_0_shifted_PCM_out 1 1 1 350
+preplace netloc PWM_wrap_0_AUD_PWM 1 6 1 2460J
+preplace netloc PWM_wrap_0_s_axis_data_tready2 1 5 2 1980J 220 2450
+preplace netloc miso_0_1 1 0 1 NJ
+preplace netloc select_0_1 1 0 2 NJ 810 NJ
+levelinfo -pg 1 -20 170 540 970 1360 1790 2260 2510 -top 0 -bot 930
+"
+}
+0

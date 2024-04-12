@@ -1,0 +1,11 @@
+verilog xil_defaultlib  \
+"../../../bd/fft_chain/ip/fft_chain_buff_fft_wrapper_0_0/sim/fft_chain_buff_fft_wrapper_0_0.v" \
+"../../../bd/fft_chain/sim/fft_chain.v" \
+"../../../bd/fft_chain/ip/fft_chain_pitch_correction_0_0/sim/fft_chain_pitch_correction_0_0.v" \
+"../../../bd/fft_chain/ip/fft_chain_pitch_correction_0_1/sim/fft_chain_pitch_correction_0_1.v" \
+"../../../bd/fft_chain/ip/fft_chain_PWM_0_4/sim/fft_chain_PWM_0_4.v" \
+"../../../bd/fft_chain/ip/fft_chain_spi_0_0/sim/fft_chain_spi_0_0.v" \
+
+verilog xil_defaultlib "glbl.v"
+
+nosort
