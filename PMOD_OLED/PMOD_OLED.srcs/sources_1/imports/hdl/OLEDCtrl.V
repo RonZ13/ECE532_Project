@@ -178,7 +178,7 @@ always@(posedge clk)
         clear_screen_ready  <= 0;
     end
     /*
-    INITIALIZATION SEQUENCE: (contained in init_sequence.dat)
+    INITIALIZATION SEQUENCE: (contained in init_sequence.mem)
     1   Turn DC logic low                               delay 1ms       1   0001
     2   Turn RES logic high                             delay 1ms       2   3001
     3   Turn VCCEN logic low                            delay 1ms       3   0201
