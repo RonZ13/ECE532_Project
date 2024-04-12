@@ -3,7 +3,7 @@
 This repository contains the source code for the project: Nexys 4 DDR onboard Karaoke Machine with Realtime Pitch Correction.
 ECE532, UofT, 2024.
 
-Four sub-repositories store breakdowned functional modules:
+Three sub-repositories store breakdowned functional modules:
 1. PMOD_OLED/
 2. TFT_keyboard/
 3. pitch_correction/
