@@ -3,23 +3,21 @@
    <wave_state>
    </wave_state>
    <db_ref_list>
-      <db_ref path="D:/ECE532_Project/PMOD_OLED/PMOD_OLED.hw/hw_1/wave/hw_ila_data_1/hw_ila_data_1.wdb" id="1">
+      <db_ref path="C:/Users/zhan6738/PMOD_OLED/PMOD_OLED.hw/hw_1/wave/hw_ila_data_1/hw_ila_data_1.wdb" id="1">
          <top_modules>
          </top_modules>
       </db_ref>
    </db_ref_list>
    <zoom_setting>
       <ZoomStartTime time="0fs"></ZoomStartTime>
-      <ZoomEndTime time="1072001fs"></ZoomEndTime>
-      <Cursor1Time time="1036000fs"></Cursor1Time>
+      <ZoomEndTime time="19171fs"></ZoomEndTime>
+      <Cursor1Time time="1032000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="258"></NameColumnWidth>
-      <ValueColumnWidth column_width="284"></ValueColumnWidth>
+      <ValueColumnWidth column_width="262"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="13" />
-   <wave_markers>
-   </wave_markers>
+   <WVObjectSize size="15" />
    <wvobject fp_name="oled_cs_OBUF" type="logic">
       <obj_property name="DisplayName">FullPathName</obj_property>
       <obj_property name="ElementShortName">oled_cs_OBUF</obj_property>
@@ -85,16 +83,16 @@
    </wvobject>
    <wvobject fp_name="uut/state" type="array">
       <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">uut/state[7:0]</obj_property>
-      <obj_property name="ObjectShortName">state[7:0]</obj_property>
-      <obj_property name="LABELRADIX">false</obj_property>
+      <obj_property name="ElementShortName">uut/state[6:2]</obj_property>
+      <obj_property name="ObjectShortName">state[6:2]</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
       <obj_property name="Radix">HEXRADIX</obj_property>
    </wvobject>
    <wvobject fp_name="state" type="array">
       <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">state[2:0]</obj_property>
-      <obj_property name="ObjectShortName">state[2:0]</obj_property>
+      <obj_property name="ElementShortName">state[4:0]</obj_property>
+      <obj_property name="ObjectShortName">state[4:0]</obj_property>
       <obj_property name="Radix">HEXRADIX</obj_property>
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
@@ -103,7 +101,7 @@
       <obj_property name="DisplayName">FullPathName</obj_property>
       <obj_property name="ElementShortName">uut/startup_count[6:0]</obj_property>
       <obj_property name="ObjectShortName">startup_count[6:0]</obj_property>
-      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
@@ -115,12 +113,19 @@
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
-   <wvobject fp_name="uut/startup_count" type="array">
-      <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">uut/startup_count[6:0]</obj_property>
-      <obj_property name="ObjectShortName">startup_count[6:0]</obj_property>
+   <wvobject fp_name="u_ila_0_state" type="array">
+      <obj_property name="ElementShortName">u_ila_0_state[1:0]</obj_property>
+      <obj_property name="ObjectShortName">u_ila_0_state[1:0]</obj_property>
       <obj_property name="Radix">HEXRADIX</obj_property>
-      <obj_property name="LABELRADIX">true</obj_property>
-      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject fp_name="u_ila_0_state" type="array">
+      <obj_property name="ElementShortName">u_ila_0_state[1:0]</obj_property>
+      <obj_property name="ObjectShortName">u_ila_0_state[1:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="uut/state" type="array">
+      <obj_property name="ElementShortName">uut/state[6:2]</obj_property>
+      <obj_property name="ObjectShortName">state[6:2]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
    </wvobject>
 </wave_config>

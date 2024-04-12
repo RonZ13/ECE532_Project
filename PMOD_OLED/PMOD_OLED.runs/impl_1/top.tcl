@@ -68,17 +68,16 @@ set rc [catch {
   set_param tcl.collectionResultDisplayLimit 0
   set_param xicom.use_bs_reader 1
   create_project -in_memory -part xc7a100tcsg324-1
-  set_property board_part digilentinc.com:nexys4_ddr:part0:1.1 [current_project]
   set_property design_mode GateLvl [current_fileset]
   set_param project.singleFileAddWarning.threshold 0
-  set_property webtalk.parent_dir D:/ECE532_Project/PMOD_OLED/PMOD_OLED.cache/wt [current_project]
-  set_property parent.project_path D:/ECE532_Project/PMOD_OLED/PMOD_OLED.xpr [current_project]
-  set_property ip_repo_paths D:/ECE532_Project/ECE532_Project/vivado_library/ip [current_project]
+  set_property webtalk.parent_dir C:/Users/zhan6738/PMOD_OLED/PMOD_OLED.cache/wt [current_project]
+  set_property parent.project_path C:/Users/zhan6738/PMOD_OLED/PMOD_OLED.xpr [current_project]
+  set_property ip_repo_paths C:/Users/zhan6738/ECE532_Project/vivado_library/ip [current_project]
   update_ip_catalog
-  set_property ip_output_repo D:/ECE532_Project/PMOD_OLED/PMOD_OLED.cache/ip [current_project]
+  set_property ip_output_repo C:/Users/zhan6738/PMOD_OLED/PMOD_OLED.cache/ip [current_project]
   set_property ip_cache_permissions {read write} [current_project]
-  add_files -quiet D:/ECE532_Project/PMOD_OLED/PMOD_OLED.runs/synth_1/top.dcp
-  read_xdc D:/ECE532_Project/PMOD_OLED/PMOD_OLED.srcs/constrs_1/imports/constraints/NexysVideo_Master.xdc
+  add_files -quiet C:/Users/zhan6738/PMOD_OLED/PMOD_OLED.runs/synth_1/top.dcp
+  read_xdc C:/Users/zhan6738/PMOD_OLED/PMOD_OLED.srcs/constrs_1/imports/constraints/NexysVideo_Master.xdc
   link_design -top top -part xc7a100tcsg324-1
   close_msg_db -file init_design.pb
 } RESULT]

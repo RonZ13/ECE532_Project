@@ -24,22 +24,25 @@ create_project -in_memory -part xc7a100tcsg324-1
 set_param project.singleFileAddWarning.threshold 0
 set_param project.compositeFile.enableAutoGeneration 0
 set_param synth.vivado.isSynthRun true
-set_property webtalk.parent_dir D:/ECE532_Project/PMOD_OLED/PMOD_OLED.cache/wt [current_project]
-set_property parent.project_path D:/ECE532_Project/PMOD_OLED/PMOD_OLED.xpr [current_project]
+set_property webtalk.parent_dir C:/Users/zhan6738/PMOD_OLED/PMOD_OLED.cache/wt [current_project]
+set_property parent.project_path C:/Users/zhan6738/PMOD_OLED/PMOD_OLED.xpr [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language Verilog [current_project]
-set_property board_part digilentinc.com:nexys4_ddr:part0:1.1 [current_project]
-set_property ip_repo_paths d:/ECE532_Project/ECE532_Project/vivado_library/ip [current_project]
+set_property ip_repo_paths c:/Users/zhan6738/ECE532_Project/vivado_library/ip [current_project]
 update_ip_catalog
-set_property ip_output_repo d:/ECE532_Project/PMOD_OLED/PMOD_OLED.cache/ip [current_project]
+set_property ip_output_repo c:/Users/zhan6738/PMOD_OLED/PMOD_OLED.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
-read_mem D:/ECE532_Project/PMOD_OLED/PMOD_OLED.srcs/sources_1/other/init_sequence.mem
+read_mem {
+  C:/Users/zhan6738/PMOD_OLED/PMOD_OLED.srcs/sources_1/other/init_sequence.mem
+  C:/Users/zhan6738/PMOD_OLED/PMOD_OLED.srcs/sources_1/other/test.mem
+}
 read_verilog -library xil_defaultlib {
-  D:/ECE532_Project/PMOD_OLED/PMOD_OLED.srcs/sources_1/imports/hdl/OLEDCtrl.V
-  D:/ECE532_Project/PMOD_OLED/PMOD_OLED.srcs/sources_1/imports/hdl/SpiCtrl.v
-  D:/ECE532_Project/PMOD_OLED/PMOD_OLED.srcs/sources_1/imports/hdl/debouncer.v
-  D:/ECE532_Project/PMOD_OLED/PMOD_OLED.srcs/sources_1/imports/hdl/delay_ms.v
-  D:/ECE532_Project/PMOD_OLED/PMOD_OLED.srcs/sources_1/imports/hdl/top.v
+  C:/Users/zhan6738/PMOD_OLED/PMOD_OLED.srcs/sources_1/imports/hdl/OLEDCtrl.V
+  C:/Users/zhan6738/PMOD_OLED/PMOD_OLED.srcs/sources_1/imports/hdl/SpiCtrl.v
+  C:/Users/zhan6738/PMOD_OLED/PMOD_OLED.srcs/sources_1/imports/hdl/debouncer.v
+  C:/Users/zhan6738/PMOD_OLED/PMOD_OLED.srcs/sources_1/imports/hdl/delay_ms.v
+  C:/Users/zhan6738/PMOD_OLED/PMOD_OLED.srcs/sources_1/new/delay_us.v
+  C:/Users/zhan6738/PMOD_OLED/PMOD_OLED.srcs/sources_1/imports/hdl/top.v
 }
 # Mark all dcp files as not used in implementation to prevent them from being
 # stitched into the results of this synthesis run. Any black boxes in the
@@ -49,8 +52,8 @@ read_verilog -library xil_defaultlib {
 foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
   set_property used_in_implementation false $dcp
 }
-read_xdc D:/ECE532_Project/PMOD_OLED/PMOD_OLED.srcs/constrs_1/imports/constraints/NexysVideo_Master.xdc
-set_property used_in_implementation false [get_files D:/ECE532_Project/PMOD_OLED/PMOD_OLED.srcs/constrs_1/imports/constraints/NexysVideo_Master.xdc]
+read_xdc C:/Users/zhan6738/PMOD_OLED/PMOD_OLED.srcs/constrs_1/imports/constraints/NexysVideo_Master.xdc
+set_property used_in_implementation false [get_files C:/Users/zhan6738/PMOD_OLED/PMOD_OLED.srcs/constrs_1/imports/constraints/NexysVideo_Master.xdc]
 
 set_param ips.enableIPCacheLiteLoad 1
 close [open __synthesis_is_running__ w]
