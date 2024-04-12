@@ -1,0 +1,426 @@
+Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+--------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2018.3.1 (win64) Build 2489853 Tue Mar 26 04:20:25 MDT 2019
+| Date         : Wed Apr  3 04:04:45 2024
+| Host         : BA3135WS19 running 64-bit major release  (build 9200)
+| Command      : upgrade_ip
+| Device       : xc7a100tcsg324-1
+--------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'design_1_Pmod_OLED_Controller_0_0'
+
+1. Summary
+----------
+
+SUCCESS in the upgrade of design_1_Pmod_OLED_Controller_0_0 from utoronto.ca:user:Pmod_OLED_Controller:1.8 (Rev. 1) to utoronto.ca:user:Pmod_OLED_Controller:1.9 (Rev. 1)
+
+
+
+
+
+
+Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+--------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2018.3.1 (win64) Build 2489853 Tue Mar 26 04:20:25 MDT 2019
+| Date         : Wed Apr  3 01:05:51 2024
+| Host         : BA3135WS19 running 64-bit major release  (build 9200)
+| Command      : upgrade_ip
+| Device       : xc7a100tcsg324-1
+--------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'design_1_fft_chain_0_0'
+
+1. Summary
+----------
+
+SUCCESS in the conversion of design_1_fft_chain_0_0 (xilinx.com:user:fft_chain:1.0 (Rev. 2)) to Vivado generation flows.
+
+
+
+
+
+
+Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+--------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2018.3.1 (win64) Build 2489853 Tue Mar 26 04:20:25 MDT 2019
+| Date         : Wed Apr  3 00:42:49 2024
+| Host         : BA3135WS19 running 64-bit major release  (build 9200)
+| Command      : upgrade_ip
+| Device       : xc7a100tcsg324-1
+--------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'design_1_Pmod_OLED_Controller_0_0'
+
+1. Summary
+----------
+
+SUCCESS in the upgrade of design_1_Pmod_OLED_Controller_0_0 from utoronto.ca:user:Pmod_OLED_Controller:1.7 (Rev. 1) to utoronto.ca:user:Pmod_OLED_Controller:1.8 (Rev. 1)
+
+
+
+
+
+
+Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+--------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2018.3.1 (win64) Build 2489853 Tue Mar 26 04:20:25 MDT 2019
+| Date         : Tue Apr  2 23:55:12 2024
+| Host         : BA3135WS19 running 64-bit major release  (build 9200)
+| Command      : upgrade_ip
+| Device       : xc7a100tcsg324-1
+--------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'design_1_fft_chain_0_0'
+
+1. Summary
+----------
+
+CAUTION (success, with warnings) in the conversion of design_1_fft_chain_0_0 (xilinx.com:user:fft_chain:1.0 (Rev. 2)) to Vivado generation flows.
+
+After upgrade, an IP may have parameter and port differences compared to the original customization. Please review the parameters within the IP customization GUI to ensure proper functionality. Also, please review the updated IP instantiation template to ensure proper connectivity, and update your design if required.
+
+2. Connection Warnings
+----------------------
+
+Detected external port differences while upgrading 'design_1_fft_chain_0_0'. These changes may impact your design.
+
+
+-Upgrade has added port 'pitch_enable'
+
+
+
+
+
+
+
+Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+--------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2018.3.1 (win64) Build 2489853 Tue Mar 26 04:20:25 MDT 2019
+| Date         : Tue Apr  2 23:14:51 2024
+| Host         : BA3135WS19 running 64-bit major release  (build 9200)
+| Command      : upgrade_ip
+| Device       : xc7a100tcsg324-1
+--------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'design_1_fft_chain_0_0'
+
+1. Summary
+----------
+
+CAUTION (success, with warnings) in the conversion of design_1_fft_chain_0_0 (xilinx.com:user:fft_chain:1.0 (Rev. 2)) to Vivado generation flows.
+
+After upgrade, an IP may have parameter and port differences compared to the original customization. Please review the parameters within the IP customization GUI to ensure proper functionality. Also, please review the updated IP instantiation template to ensure proper connectivity, and update your design if required.
+
+2. Connection Warnings
+----------------------
+
+Detected external port differences while upgrading 'design_1_fft_chain_0_0'. These changes may impact your design.
+
+
+-Upgrade has removed port 'monitor_fft'
+
+-Upgrade has removed port 'monitor_fixed'
+
+-Upgrade has removed port 'monitor_fixed_vld'
+
+-Upgrade has added port 'aud_in_sel'
+
+-Upgrade has added port 'aud_out_sel'
+
+-Upgrade has added port 'monitor_fft_out'
+
+-Upgrade has added port 'monitor_pitch_out'
+
+-Upgrade has added port 'monitor_pitch_vld'
+
+
+
+
+
+
+
+Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+--------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2018.3.1 (win64) Build 2489853 Tue Mar 26 04:20:25 MDT 2019
+| Date         : Tue Apr  2 22:20:13 2024
+| Host         : BA3135WS19 running 64-bit major release  (build 9200)
+| Command      : upgrade_ip
+| Device       : xc7a100tcsg324-1
+--------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'design_1_Pmod_OLED_Controller_0_0'
+
+1. Summary
+----------
+
+SUCCESS in the upgrade of design_1_Pmod_OLED_Controller_0_0 from utoronto.ca:user:Pmod_OLED_Controller:1.6 (Rev. 1) to utoronto.ca:user:Pmod_OLED_Controller:1.7 (Rev. 1)
+
+
+
+
+
+
+Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+--------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2018.3.1 (win64) Build 2489853 Tue Mar 26 04:20:25 MDT 2019
+| Date         : Tue Apr  2 21:02:04 2024
+| Host         : BA3135WS19 running 64-bit major release  (build 9200)
+| Command      : upgrade_ip
+| Device       : xc7a100tcsg324-1
+--------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'design_1_fft_chain_0_0'
+
+1. Summary
+----------
+
+SUCCESS in the conversion of design_1_fft_chain_0_0 (xilinx.com:user:fft_chain:1.0 (Rev. 2)) to Vivado generation flows.
+
+
+
+
+
+
+Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+--------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2018.3.1 (win64) Build 2489853 Tue Mar 26 04:20:25 MDT 2019
+| Date         : Tue Apr  2 18:23:46 2024
+| Host         : BA3135WS19 running 64-bit major release  (build 9200)
+| Command      : upgrade_ip
+| Device       : xc7a100tcsg324-1
+--------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'design_1_Pmod_OLED_Controller_0_0'
+
+1. Summary
+----------
+
+SUCCESS in the upgrade of design_1_Pmod_OLED_Controller_0_0 from utoronto.ca:user:Pmod_OLED_Controller:1.5 (Rev. 1) to utoronto.ca:user:Pmod_OLED_Controller:1.6 (Rev. 1)
+
+
+
+
+
+
+Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+--------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2018.3.1 (win64) Build 2489853 Tue Mar 26 04:20:25 MDT 2019
+| Date         : Tue Apr  2 00:36:39 2024
+| Host         : BA3135WS19 running 64-bit major release  (build 9200)
+| Command      : upgrade_ip
+| Device       : xc7a100tcsg324-1
+--------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'design_1_Pmod_OLED_Controller_0_0'
+
+1. Summary
+----------
+
+SUCCESS in the upgrade of design_1_Pmod_OLED_Controller_0_0 from utoronto.ca:user:Pmod_OLED_Controller:1.4 (Rev. 1) to utoronto.ca:user:Pmod_OLED_Controller:1.5 (Rev. 1)
+
+
+
+
+
+
+Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+--------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2018.3.1 (win64) Build 2489853 Tue Mar 26 04:20:25 MDT 2019
+| Date         : Wed Mar 27 22:21:03 2024
+| Host         : BA3135WS22 running 64-bit major release  (build 9200)
+| Command      : upgrade_ip
+| Device       : xc7a100tcsg324-1
+--------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'design_1_Pmod_OLED_Controller_0_0'
+
+1. Summary
+----------
+
+SUCCESS in the upgrade of design_1_Pmod_OLED_Controller_0_0 from utoronto.ca:user:Pmod_OLED_Controller:1.3 (Rev. 1) to utoronto.ca:user:Pmod_OLED_Controller:1.4 (Rev. 1)
+
+
+
+
+
+
+Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+--------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2018.3.1 (win64) Build 2489853 Tue Mar 26 04:20:25 MDT 2019
+| Date         : Wed Mar 27 21:30:58 2024
+| Host         : BA3135WS22 running 64-bit major release  (build 9200)
+| Command      : upgrade_ip
+| Device       : xc7a100tcsg324-1
+--------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'design_1_fft_chain_0_0'
+
+1. Summary
+----------
+
+SUCCESS in the conversion of design_1_fft_chain_0_0 (xilinx.com:user:fft_chain:1.0 (Rev. 2)) to Vivado generation flows.
+
+
+
+
+
+
+Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+--------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2018.3.1 (win64) Build 2489853 Tue Mar 26 04:20:25 MDT 2019
+| Date         : Wed Mar 27 19:20:08 2024
+| Host         : BA3135WS22 running 64-bit major release  (build 9200)
+| Command      : upgrade_ip
+| Device       : xc7a100tcsg324-1
+--------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'design_1_Pmod_OLED_Controller_0_0'
+
+1. Summary
+----------
+
+SUCCESS in the upgrade of design_1_Pmod_OLED_Controller_0_0 from utoronto.ca:user:Pmod_OLED_Controller:1.2 (Rev. 1) to utoronto.ca:user:Pmod_OLED_Controller:1.3 (Rev. 1)
+
+
+
+
+
+
+Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+--------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2018.3.1 (win64) Build 2489853 Tue Mar 26 04:20:25 MDT 2019
+| Date         : Wed Mar 27 15:35:15 2024
+| Host         : BA3155WS03 running 64-bit major release  (build 9200)
+| Command      : upgrade_ip
+| Device       : xc7a100tcsg324-1
+--------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'design_1_fft_chain_0_0'
+
+1. Summary
+----------
+
+SUCCESS in the conversion of design_1_fft_chain_0_0 (xilinx.com:user:fft_chain:1.0 (Rev. 2)) to Vivado generation flows.
+
+
+
+
+
+
+Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+--------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2018.3.1 (win64) Build 2489853 Tue Mar 26 04:20:25 MDT 2019
+| Date         : Wed Mar 27 15:35:15 2024
+| Host         : BA3155WS03 running 64-bit major release  (build 9200)
+| Command      : upgrade_ip
+| Device       : xc7a100tcsg324-1
+--------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'design_1_axi_ps2_0_0'
+
+1. Summary
+----------
+
+SUCCESS in the conversion of design_1_axi_ps2_0_0 (digilentinc.com:IP:axi_ps2:1.0 (Rev. 2)) to Vivado generation flows.
+
+
+
+
+
+
+Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+--------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2018.3.1 (win64) Build 2489853 Tue Mar 26 04:20:25 MDT 2019
+| Date         : Wed Mar 27 15:20:48 2024
+| Host         : BA3155WS03 running 64-bit major release  (build 9200)
+| Command      : upgrade_ip
+| Device       : xc7a100tcsg324-1
+--------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'design_1_Pmod_OLED_Controller_0_0'
+
+1. Summary
+----------
+
+SUCCESS in the upgrade of design_1_Pmod_OLED_Controller_0_0 from utoronto.ca:user:Pmod_OLED_Controller:1.1 (Rev. 1) to utoronto.ca:user:Pmod_OLED_Controller:1.2 (Rev. 1)
+
+
+
+
+
+
+Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+--------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2018.3.1 (win64) Build 2489853 Tue Mar 26 04:20:25 MDT 2019
+| Date         : Wed Mar 27 14:34:21 2024
+| Host         : BA3155WS03 running 64-bit major release  (build 9200)
+| Command      : upgrade_ip
+| Device       : xc7a100tcsg324-1
+--------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'design_1_fft_chain_0_0'
+
+1. Summary
+----------
+
+SUCCESS in the conversion of design_1_fft_chain_0_0 (xilinx.com:user:fft_chain:1.0 (Rev. 2)) to Vivado generation flows.
+
+
+
+
+
+
+Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+--------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2018.3.1 (win64) Build 2489853 Tue Mar 26 04:20:25 MDT 2019
+| Date         : Wed Mar 27 13:46:04 2024
+| Host         : BA3155WS03 running 64-bit major release  (build 9200)
+| Command      : upgrade_ip
+| Device       : xc7a100tcsg324-1
+--------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'design_1_Pmod_OLED_Controller_0_0'
+
+1. Summary
+----------
+
+SUCCESS in the upgrade of design_1_Pmod_OLED_Controller_0_0 from utoronto.ca:user:Pmod_OLED_Controller:1.0 (Rev. 1) to utoronto.ca:user:Pmod_OLED_Controller:1.1 (Rev. 1)
+
+
+
+
+
+
+Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+--------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2018.3.1 (win64) Build 2489853 Tue Mar 26 04:20:25 MDT 2019
+| Date         : Wed Mar 27 13:37:07 2024
+| Host         : BA3155WS03 running 64-bit major release  (build 9200)
+| Command      : upgrade_ip
+| Device       : xc7a100tcsg324-1
+--------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'design_1_fft_chain_wrapper_0_0'
+
+1. Summary
+----------
+
+CAUTION (success, with warnings) in the conversion of design_1_fft_chain_wrapper_0_0 (xilinx.com:user:fft_chain_wrapper:1.0 (Rev. 2)) to Vivado generation flows.
+
+After upgrade, an IP may have parameter and port differences compared to the original customization. Please review the parameters within the IP customization GUI to ensure proper functionality. Also, please review the updated IP instantiation template to ensure proper connectivity, and update your design if required.
+
+2. Connection Warnings
+----------------------
+
+Detected external port differences while upgrading 'design_1_fft_chain_wrapper_0_0'. These changes may impact your design.
+
+
+-Upgrade has removed port 'monitor_audio'
+
+-Upgrade has removed port 'monitor_scaled'
+
+-Upgrade has added port 'monitor_audio_in'
+
+-Upgrade has added port 'monitor_audio_out'
+
+

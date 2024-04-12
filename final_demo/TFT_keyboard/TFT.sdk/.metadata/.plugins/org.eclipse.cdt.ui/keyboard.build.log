@@ -1,0 +1,42 @@
+19:49:29 **** Auto Build of configuration Debug for project keyboard ****
+make all 
+'Building file: ../src/VGA.cpp'
+'Invoking: MicroBlaze g++ compiler'
+mb-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/VGA.o" -I../../keyboard_bsp/microblaze_0/include -mlittle-endian -mxl-barrel-shift -mno-xl-soft-div -mcpu=v11.0 -mno-xl-soft-mul -mhard-float -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/VGA.d" -MT"src/VGA.o" -o "src/VGA.o" "../src/VGA.cpp"
+'Finished building: ../src/VGA.cpp'
+' '
+'Building file: ../src/main.cc'
+'Invoking: MicroBlaze g++ compiler'
+mb-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -I../../keyboard_bsp/microblaze_0/include -mlittle-endian -mxl-barrel-shift -mno-xl-soft-div -mcpu=v11.0 -mno-xl-soft-mul -mhard-float -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc: In function 'int main()':
+../src/main.cc:24:8: warning: unused variable 'blue' [-Wunused-variable]
+  color blue = {0x0, 0x0, 0xf};
+        ^~~~
+../src/main.cc:26:8: warning: unused variable 'red' [-Wunused-variable]
+  color red = {0xf, 0x0, 0x0};
+        ^~~
+../src/main.cc:35:9: warning: unused variable 'j' [-Wunused-variable]
+  int i, j;
+         ^
+../src/main.cc:38:7: warning: unused variable 'front_old_chr' [-Wunused-variable]
+  text front_old_chr;
+       ^~~~~~~~~~~~~
+../src/main.cc:39:7: warning: unused variable 'back_old_chr' [-Wunused-variable]
+  text back_old_chr;
+       ^~~~~~~~~~~~
+'Finished building: ../src/main.cc'
+' '
+'Building target: keyboard.elf'
+'Invoking: MicroBlaze g++ linker'
+mb-g++ -Wl,-T -Wl,../src/lscript.ld -L../../keyboard_bsp/microblaze_0/lib -mlittle-endian -mxl-barrel-shift -mno-xl-soft-div -mcpu=v11.0 -mno-xl-soft-mul -mhard-float -Wl,--no-relax -Wl,--gc-sections -o "keyboard.elf"  ./src/VGA.o ./src/keyboard.o ./src/main.o   -Wl,--start-group,-lxil,-lgcc,-lc,-lstdc++,--end-group
+'Finished building target: keyboard.elf'
+' '
+'Invoking: MicroBlaze Print Size'
+mb-size keyboard.elf  |tee "keyboard.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  48104	   2952	   3464	  54520	   d4f8	keyboard.elf
+'Finished building: keyboard.elf.size'
+' '
+
+19:49:30 Build Finished (took 1s.121ms)
+
